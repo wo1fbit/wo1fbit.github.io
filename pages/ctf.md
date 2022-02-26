@@ -1,6 +1,6 @@
 ---
 layout: page
-title: CTF
+title: CTF Write-ups
 permalink: /CTF/
 ---
 [KNIGHT CTF 2022](http://p4rsz.me/CTF/knightctf-2022.html)
