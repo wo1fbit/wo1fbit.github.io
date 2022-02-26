@@ -1,7 +1,7 @@
 ---
 layout: page
-title: "windows Fundamentals"
-permalink: /pages/windows/
+title: Windows
+permalink: /Windows/
 ---
 
 [File system.]()
