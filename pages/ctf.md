@@ -1,7 +1,7 @@
 ---
 layout: page
 title: CTF
-permalink: /gallery/
+permalink: /CTF/
 gallery_path: "assets/img/pexels"
 tags: [Page]
 ---
