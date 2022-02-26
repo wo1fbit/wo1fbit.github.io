@@ -1,6 +1,6 @@
 ---
 layout: post
-title: MHSCTF 2022
+title: KNIGHT CTF 2022
 excerpt_separator: <!--more-->
 ---
 
