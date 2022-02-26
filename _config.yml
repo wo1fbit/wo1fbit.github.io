@@ -1,6 +1,6 @@
 # SITE CONFIGURATION
-baseurl: "/Type-on-Strap"
-url: "https://sylhare.github.io"
+baseurl: ""
+url: "https://P4rsz.github.io"
 
 # THEME-SPECIFIC CONFIGURATION
 title: Type on Strap                                    # site's title
@@ -19,6 +19,12 @@ footer_text: >
 excerpt: true                                           # Or "truncate" (first 250 characters), "false" to disable
 post_navigation: true
 color_image: /assets/img/lineart.png                    # A bit transparent for color posts.
+
+# BLOG CONFIGURATION
+post_navigation: true
+paginate: 10
+paginate_path: "blog/page:num"
+plugins: [jekyll-paginate, jekyll-seo-tag, jekyll-feed]
 
 # Features
 # More in the _data folder for share buttons, author and language
