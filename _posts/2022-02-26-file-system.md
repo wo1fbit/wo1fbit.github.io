@@ -1,7 +1,13 @@
+layout: post
+title: "Windows File System"
+excerpt_separator: <!--more-->
+
 # File System.
 A file system is simply a way to oragnize and store files on a storage device.
 
 ## Windows has five file systems.
+
+<!--more-->
 
 **File allocation table (FAT)**
 
