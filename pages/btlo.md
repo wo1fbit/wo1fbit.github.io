@@ -1,7 +1,8 @@
 ---
-layout: Blue Teams Lab Online
+layout: page
 title: BTLO
 permalink: /btlo/
 ---
 
-# Page under construction. :)
+# Blue Teams Lab Online
+### Page under construction. :)
