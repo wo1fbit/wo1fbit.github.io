@@ -34,10 +34,10 @@ Portswigger - An access control security model is a formally defined definition 
 **Rule-Based Access Control (RBAC')** - this model kind of like is an add-on to the other models. The security administartor defines rules which are based on conditions, such as the time of day or location. For example, after closing work, there is no need for anyone to have access to the main office even the managers. With rule-based access control, you can set a rule to deny access to everyone from 5 p.m. to 9 a.m. the next morning. Rules can be created for just about any occasion.
 
 **Access control links.**
-[portswigger](https://portswigger.net/web-security/access-control)
-[wikipedia](https://en.wikipedia.org/wiki/Access_control)
-[techtarget](https://www.techtarget.com/searchsecurity/definition/access-control)
-[citrix](https://www.citrix.com/solutions/secure-access/what-is-access-control.html)
-[owasp](https://owasp.org/Top10/A01_2021-Broken_Access_Control/)
+* [portswigger](https://portswigger.net/web-security/access-control)
+* [wikipedia](https://en.wikipedia.org/wiki/Access_control)
+* [techtarget](https://www.techtarget.com/searchsecurity/definition/access-control)
+* [citrix](https://www.citrix.com/solutions/secure-access/what-is-access-control.html)
+* [owasp](https://owasp.org/Top10/A01_2021-Broken_Access_Control/)
 
 # More updates later.
