@@ -3,14 +3,14 @@ layout: page
 title: "Web Academy"
 permalink: /Web Academy/
 ---
+## The journey: Learning Web Security. 
 
-Hello,
-
-Beginning a career in Web Security can be quite challenging, confusing and hard to know where to begin. It is even harder when you do not have somebody to guide you. After much moving aimlessly and learning just whatever, I decide to sit down and work out a plan to learn in an aimful manner. This is what I came up with. In school and pretty much any other place where learning takes place, you don't just start learning anyhowly, you have something or someone to guide you. This could be a book, syllabus, a mentor, a trainer. I need a guide that would help me learn slowly and progressively with a great outcome. However, I know the journey will be difficult and I will have some setbacks along the way but I'm actually looking forward to them. They will help me in building myself along the way. From the past, learning something after struggles and setbacks gives quite an exhilarating and satisfying feeling. Almost otherwordly.
+Learning Web Security can be quite challenging, confusing and hard to know where to begin. It is even harder when you do not have somebody to guide you. After much moving aimlessly and learning just whatever, I decide to sit down and work out a plan to learn in an aimful manner. 
+This is what I came up with. In school and pretty much any other place where learning takes place, you don't just start learning anyhowly, you have something or someone to guide you. This could be a book, syllabus, a mentor, a trainer.
+I need a guide that would help me learn slowly and progressively with a great outcome. However, I know the journey will be difficult and I will have some setbacks along the way but I'm actually looking forward to them. 
+They will help me to build myself along the way. From the past, learning something after struggles and setbacks gives quite an exhilarating and satisfying feeling. Almost otherwordly.
 
 After doing much research I finally find a school that will teach me what I yearn for. The internet will be my school, the OWASP my guide and [portswigger](https://portswigger.net/) my teacher. I will be using the OWASP top ten.
-
-**reasons** don't forget to put the reasons.
 
 # What is OWASP?
 
