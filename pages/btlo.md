@@ -4,5 +4,5 @@ title: BTLO
 permalink: /btlo/
 ---
 
-# Blue Teams Lab Online
+# Blue Team Labs Online
 ### Page under construction. :)
