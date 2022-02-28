@@ -13,7 +13,6 @@ header_text: Parsz # Change Blog header text
 header_feature_image: assets/img/header/me2.jpg
 header_feature_image_responsive: true
 footer_text: Powered by Calvin Kimani
-Nothing is Safe!!.
 
 # Blog
 excerpt: true                                           # Or "truncate" (first 250 characters), "false" to disable
