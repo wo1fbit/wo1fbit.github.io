@@ -2,7 +2,7 @@
 layout: page
 title: "Web Academy"
 permalink: /Web Academy/
-----
+---
 
 Hello,
 
