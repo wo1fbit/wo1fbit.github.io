@@ -1,4 +1,10 @@
-Hello.
+---
+layout: page
+title: "Web Academy"
+permalink: /Web Academy/
+----
+
+Hello,
 
 Beginning a career in Web Security can be quite challenging, confusing and hard to know where to begin. It is even harder when you do not have somebody to guide you. After much moving aimlessly and learning just whatever, I decide to sit down and work out a plan to learn in an "aimfull manner". This is what I came up with. In school and pretty much any other place where learning takes place, you don't just start learning anyhowly, you have something or someone to guide you. This could be a book, syllabus, a mentor, a trainer. I needed a guide that would help me learn slowly and progressively and the outcome would be awesome. However, I know the journey will be difficult and I will have some setbacks along the way but I'm actually looking forward to them. They will help me in building myself along the way. Finally learning something mew and after many failures and setbacks gives quite an exhilarating and satisfying feeling. Almost otherwordly.
 
@@ -43,3 +49,6 @@ The journey has began.
 
 See you on the other side,
 parsz.
+
+**THE JOURNEY**
+* [A01:2021-Broken Access Control](http://p4rsz.me/2022/02/28/A01-2021-Broken-Access-Control.html)
