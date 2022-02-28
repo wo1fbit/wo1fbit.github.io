@@ -1,16 +1,24 @@
+---
+layout: post
+title: Broken Access Control
+excerpt_separator: <!--more-->
+---
+
 # A01: Broken Access Control.
 
-From the title I can see that something is broken. **Access control** is broken. Maybe it shouldn't be broken Let's go and check out what is Access Control.
+From the title, something is broken. **Access control** is. Maybe it shouldn't be. Let's go and check out what is Access Control.
 
-### Access Contro;.
-Access control is regulating the way a resources is accessed. When you want to control how people can get in your house or compound you use a door or a gate. The access control is the door or gate.
+### Access Control.
+Access control is regulating/controling the way, who, how a resources is accessed.
+
+<!--more-->
 
 #### How does access control work?
-Access control identifies people by use of credentials such as usernames, passwords, physical door keys, biometrics, security tokens to mention but a few. Access control makes sure that people or users perform actions they're supposed to do.
+Access control identifies people by use of credentials such as usernames, passwords, physical door keys, biometrics, security tokens to mention but a few. It makes sure that people or users perform actions they're supposed to do.
 
 This is achieved by using:
-* Authentication - making sure they're what or who say they are. Use of logins, passwords ......
-* Session Management - identifying which actions are performed by who. Use of cookies, session id ......
+* Authentication - making sure they're what or who say they are.
+* Session Management - identifying which actions are performed by who.
 
 From what I have gathered above, if access control is broken, then the wrong people can get access to resources or priviledges they shouldn't have and this could lead to modification or deletion of data, disclosure of sensitive data, performing dangerous actions e.t.c
 
@@ -31,3 +39,5 @@ Portswigger - An access control security model is a formally defined definition 
 [techtarget](https://www.techtarget.com/searchsecurity/definition/access-control)
 [citrix](https://www.citrix.com/solutions/secure-access/what-is-access-control.html)
 [owasp](https://owasp.org/Top10/A01_2021-Broken_Access_Control/)
+
+# More updates later.
