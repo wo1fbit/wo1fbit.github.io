@@ -4,6 +4,8 @@ title: Broken Access Control
 excerpt_separator: <!--more-->
 ---
 
+**28/02/2022**
+
 # A01: Broken Access Control.
 
 From the title, something is broken. **Access control** is. Maybe it shouldn't be. Let's go and check out what is Access Control.
@@ -29,7 +31,7 @@ Portswigger - An access control security model is a formally defined definition 
 
 **Role-Based Access Control (RBAC)** - as the name of the model says. Access is granted according to the role a person plays. Admins can delete or create users while normal users can't do that sort of thing.
 
-**Discretionary Access Control (DAC)** - in this model, owners of resources have the ability to assignn access permissions to users.
+**Discretionary Access Control (DAC)** - in this model, owners of resources have the ability to assign access permissions to users.
 
 **Rule-Based Access Control (RBAC')** - this model kind of like is an add-on to the other models. The security administartor defines rules which are based on conditions, such as the time of day or location. For example, after closing work, there is no need for anyone to have access to the main office even the managers. With rule-based access control, you can set a rule to deny access to everyone from 5 p.m. to 9 a.m. the next morning. Rules can be created for just about any occasion.
 
@@ -40,4 +42,4 @@ Portswigger - An access control security model is a formally defined definition 
 * [citrix](https://www.citrix.com/solutions/secure-access/what-is-access-control.html)
 * [owasp](https://owasp.org/Top10/A01_2021-Broken_Access_Control/)
 
-# More updates later.
+# More updates on the way.
