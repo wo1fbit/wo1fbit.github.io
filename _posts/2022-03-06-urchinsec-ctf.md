@@ -58,7 +58,7 @@ secret.php says
 ![image](https://user-images.githubusercontent.com/96860148/156927088-166a38f5-c1c2-4cc2-8b31-03a5e9123f91.png)
 
 from the script we get that the username is **admin** and the pass is a base64 encoded string -->  **$pass_string = "V1ZkU2RHRlhOV2hrUjFaclRWUkplazVCYnowSwo=";**
-which has to be encoded three times. So we decode for them...
+which has been encoded three times. So we decode for them...
 
 ![image](https://user-images.githubusercontent.com/96860148/156927239-0f663223-b5e6-4eb8-974f-301bd62fea9f.png)
 
