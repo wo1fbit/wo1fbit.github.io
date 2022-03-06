@@ -188,7 +188,7 @@ Heading to [deobfuscate.io](https://deobfuscate.io/) I'm able to know what the j
 })();
 ~~~
 
-The username and pass are base64 encoded and if you get the pass is the flag. As usual I help these guys break their site.. 😈
+The username and pass are base64 encoded and the pass is the flag. As usual I help these guys break their site.. 😈
 
 ![image](https://user-images.githubusercontent.com/96860148/156931934-b2f946dd-a9e7-4477-a973-85433c6192ac.png)
 
