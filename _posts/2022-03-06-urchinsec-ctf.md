@@ -8,7 +8,7 @@ excerpt_separator: <!--more-->
 
 ![image](https://user-images.githubusercontent.com/96860148/156925746-84bb59c1-ca95-4b50-96ed-1a3dc4fdaa8e.png)
 
-Overall it was an easy ctf, very easy. I do not do know anything about rev but I was able to solve some. This should tell you something.
+Overall it was an easy ctf, very easy. I do not know anything about rev but I was able to solve some. This should tell you something.
 
 This was a jeopardy type CTF that was hosted by UrchinSec. It was not a team event and I went solo with some of my teammates.
 Aim was for the team [@fr44aksmini](https://twitter.com/fr334aksmini) to lead the scoreboard :). I bagged the 6th positon with 2840 points.
