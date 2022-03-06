@@ -2,14 +2,15 @@
 
 ![image](https://user-images.githubusercontent.com/96860148/156925746-84bb59c1-ca95-4b50-96ed-1a3dc4fdaa8e.png)
 
-Overall it was an easy ctf, very easy. I do not do rev but I was able to solve some. This is something.
+Overall it was an easy ctf, very easy. I do not do know anything about rev but I was able to solve some. This should tell you something.
+
 This was a jeopardy type CTF that is hosted by UrchinSec. It was not a team event and I went solo with some of my teammates.
-Aim was the team [@fr44aksmini](https://twitter.com/fr334aksmini) to lead the scoreboard :). I bagged the 6th positon with 2840 points.
+Aim was for the team [@fr44aksmini](https://twitter.com/fr334aksmini) to lead the scoreboard :). I bagged the 6th positon with 2840 points.
 
 ![image](https://user-images.githubusercontent.com/96860148/156926106-1d668701-f434-4a53-9c5e-00cd1df8ae54.png)
 
-As  usual I took web security but due to bragging rights I had to do other challs but the focus of this writeup is only on WebSec part.
-In total there were seven challs in websec and I was able to solve all of them when the eighth one was added which proved to be unbeaten.
+As  usual I took web security but due to competition 😸 I had to do other challs but the focus of this writeup is only on WebSec .
+In total there were eight challs in total and I was able to solve allexcept the eighth one.
 
 ## Challs
 * Around 100-points
@@ -26,7 +27,7 @@ The site says....
 
 ![image](https://user-images.githubusercontent.com/96860148/156926398-7fc6d873-9491-49d0-9cff-73db7552c964.png)
 
-This was a really straight-forward hint. When I'm told to look around the first thing I always start is the **robots.txt** file.
+This was a really straight-forward hint. When I'm told to look around the first thing I look is the **robots.txt** file.
 
 ![image](https://user-images.githubusercontent.com/96860148/156926468-bd8dba79-8ccc-4b5a-8561-bd05b0a998e0.png)
 
@@ -57,7 +58,7 @@ secret.php says
 
 ![image](https://user-images.githubusercontent.com/96860148/156927088-166a38f5-c1c2-4cc2-8b31-03a5e9123f91.png)
 
-from the script we get that the username is **admin** and the pass is a base64 encoded string -->  **$pass_string = "V1ZkU2RHRlhOV2hrUjFaclRWUkplazVCYnowSwo=";**
+From the script we get that the username is **admin** and the pass is a base64 encoded string **$pass_string = "V1ZkU2RHRlhOV2hrUjFaclRWUkplazVCYnowSwo=";**
 which has been encoded three times. So we decode for them...
 
 ![image](https://user-images.githubusercontent.com/96860148/156927239-0f663223-b5e6-4eb8-974f-301bd62fea9f.png)
@@ -75,7 +76,7 @@ source code:
 
 ![image](https://user-images.githubusercontent.com/96860148/156930541-d858cf6b-18c2-483f-bae7-eb271ce76a8f.png)
 
-The part in green looks like a flag. Using [dcode's](https://www.dcode.fr/cipher-identifier) cipher identifier we get the flag is encoded in ASCII85.
+The part in green looks like a flag. Using [dcode's](https://www.dcode.fr/cipher-identifier) cipher identifier we get know the flag is encoded in ASCII85.
 
 ![image](https://user-images.githubusercontent.com/96860148/156930635-eb8b61c0-a712-4be7-83dd-34b22696e1eb.png)
 
@@ -105,13 +106,11 @@ def getflag():
         return jsonify(data)
 ~~~
 
-There is an API endpoint **/getflag** and it uses http method "PEWPEW" (seriously who thought of the name!!!!). So I head out and using the network tab in developer
-tools use the method PEWPEW to get flag:
+There is an API endpoint **/getflag** and it uses http method "PEWPEW" (seriously who thought of the name!!!!). So I head out and using the network tab in developer tools change the method to PEWPEW to get the flag:
 
 ![image](https://user-images.githubusercontent.com/96860148/156931220-15bcb7e2-9eb3-41dc-ac58-580c9eaf0ab9.png)
 
 ### Chall 5: Route 150-points
-
 ![image](https://user-images.githubusercontent.com/96860148/156931388-138a376a-afaa-4fbd-87de-ef38d92e89b9.png)
 
 Clicking around to get a feel of how the site behaves, clicking on download button prompts you to download a file..
@@ -164,6 +163,7 @@ x75\x65\x33\x42\x6C\x64\x31\x39\x77\x5A\x58\x64\x66\x63\x47\x56\x33\x58\x33\x42\
 ~~~
 
 Heading to [deobfuscate.io](https://deobfuscate.io/) I'm able to know what the js is doing. 
+
 ~~~
 (async () => {
   await new Promise(vandan => {
