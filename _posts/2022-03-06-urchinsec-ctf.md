@@ -206,7 +206,7 @@ With some form of LFI...
 
 ![image](https://user-images.githubusercontent.com/96860148/156932154-bbb91a1d-98ca-4319-a8ac-98322e9a12cb.png)
 
-Trying LFI and RFI proved useless and then I realized that the description was some sort of subliminal persuation. I was thinking the way the way the author wanted me
+Trying LFI and RFI proved useless and then I realized that the description was some sort of subliminal persuation. I was thinking the way the author wanted me
 to think, not how i should think think...bingo 😸. Mr.Dirsearch sorted me out....again..
 
 ![image](https://user-images.githubusercontent.com/96860148/156932380-83ce3ae5-9f9d-4dd5-9321-9c1253f5f862.png)
