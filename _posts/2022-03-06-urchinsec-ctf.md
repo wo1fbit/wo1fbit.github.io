@@ -101,7 +101,7 @@ This automatically shifts my brain for directory bruteforcing. Here comes Mr.Dir
 
 ![image](https://user-images.githubusercontent.com/96860148/156931309-e9d93adf-fba8-4a17-83f5-8cb7c622170c.png)
 
-We can see two valid directories: **/console** and **source**. The subdirectory /console is a rabbit hole and source is where I hit gold:
+We can see two valid directories: **/console** and **/source**. The subdirectory /console is a rabbit hole and source is where I hit gold:
 
 ~~~
 @app.route('/getflag', methods=["PEWPEW"])
@@ -121,7 +121,7 @@ There is an API endpoint **/getflag** and it uses http method "PEWPEW" (seriousl
 ### Chall 5: Route 150-points
 ![image](https://user-images.githubusercontent.com/96860148/156931388-138a376a-afaa-4fbd-87de-ef38d92e89b9.png)
 
-Clicking around to get a feel of how the site behaves, clicking on download button prompts you to download a file..
+Clicking around to get a feel of how the site behaves, the download button prompts you to download a file..
 
 ![image](https://user-images.githubusercontent.com/96860148/156931443-ce6e6545-a2ae-4e4d-8203-1a9e457dce99.png)
 
