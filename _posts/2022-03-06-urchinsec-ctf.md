@@ -218,8 +218,5 @@ So i go for my flag
 There it is folks..the flags for all challs except the eighth one. Nobody was able to solve it and I would like to ask the organizers to post the write-up for it.
 It's been a pleasure folks.
 
-Till next CTF,
+Till next CTF,  
 Par5z.
-
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8925977615009304"
-     crossorigin="anonymous"></script>
