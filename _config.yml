@@ -30,7 +30,7 @@ plugins: [jekyll-paginate, jekyll-seo-tag, jekyll-feed]
 # For layout customization, go to the "_sass > base" folder, and check "_variables.scss"
 katex: true                                             # Enable if using math markup
 mermaid: true                                           # Enable mermaid-js for sequence and diagrams
-google_analytics:                                       # Tracking ID, e.g. "UA-000000-01"
+google_analytics: G-K5F47W1CBL                          # Tracking ID, e.g. "UA-000000-01"
 cookie_consent: false                                   # To respect the usage of cookies
 color_theme: auto                                       # auto, dark or light
 
