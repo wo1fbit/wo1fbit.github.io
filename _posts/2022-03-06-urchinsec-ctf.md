@@ -202,7 +202,7 @@ This made my head to lock on LFI and RFI. This is how the page looks like..
 
 ![image](https://user-images.githubusercontent.com/96860148/156932089-932e5c29-e442-4d9a-b6e7-5dd759df581f.png)
 
-With some of LFI...
+With some form of LFI...
 
 ![image](https://user-images.githubusercontent.com/96860148/156932154-bbb91a1d-98ca-4319-a8ac-98322e9a12cb.png)
 
