@@ -18,7 +18,7 @@ Aim was for the team [@fr44aksmini](https://twitter.com/fr334aksmini) to lead th
 ![image](https://user-images.githubusercontent.com/96860148/156926106-1d668701-f434-4a53-9c5e-00cd1df8ae54.png)
 
 As  usual I took web security but due to competition 😸 I had to do other challs but the focus of this writeup is only on WebSec .
-In total there were eight challs in total and I was able to solve all except the eighth one.
+In total there were eight challs and I was able to solve all except the eighth one.
 
 ## Challs
 * Around 100-points
