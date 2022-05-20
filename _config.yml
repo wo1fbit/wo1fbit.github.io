@@ -10,7 +10,7 @@ favicon: assets/favicon.ico                             # Icon displayed in the 
 
 # Header and footer text
 header_text: Wo1f # Change Blog header text
-header_feature_image: assets/img/wolf.jpg
+header_feature_image: assets/img/header/header2.png
 header_feature_image_responsive: true
 footer_text: Powered by wolfbit
 
