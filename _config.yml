@@ -5,14 +5,14 @@ url: "https://P4rsz.github.io"
 # THEME-SPECIFIC CONFIGURATION
 title: Parsz                                    # site's title
 description: ""
-avatar: assets/img/me.jpg                        # Empty for no avatar in navbar
+avatar: assets/img/wolf.jpg                        # Empty for no avatar in navbar
 favicon: assets/favicon.ico                             # Icon displayed in the tab
 
 # Header and footer text
-header_text: Parsz # Change Blog header text
+header_text: Wo1f # Change Blog header text
 header_feature_image: assets/img/header/me2.jpg
 header_feature_image_responsive: true
-footer_text: Powered by Calvin Kimani
+footer_text: Powered by wolfbit
 
 # Blog
 excerpt: true                                           # Or "truncate" (first 250 characters), "false" to disable
