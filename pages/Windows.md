@@ -13,7 +13,6 @@ net localgroup administrators <user> /add --> add user to administrators
 ~~~
 
 ## File Related
----
 ~~~
 type <file> --> read file
 ~~~
