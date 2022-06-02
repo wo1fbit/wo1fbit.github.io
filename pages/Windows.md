@@ -4,7 +4,7 @@ title: Windows
 permalink: /windows/
 ---
 
-# Windows Useful Commands
+# Windows Commands
 ---
 ## User Related
 ~~~
