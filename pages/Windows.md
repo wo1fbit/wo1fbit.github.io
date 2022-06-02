@@ -21,7 +21,8 @@ type <file> --> read file
 # Meterpreter Useful Commands (Windows)
 ---
 ~~~
-getsystem
+use priv + getsystem ---> run session with system priviledges
+
 ps --> see processes running
 steal_token <process id> --> steal token of a process running as Administrator 
 shell --> drop into system shell
