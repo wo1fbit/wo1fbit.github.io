@@ -18,7 +18,7 @@ net localgroup administrators <user> /add --> add user to administrators
 type <file> --> read file
 ~~~
 
-# Meterpreter Useful Commands
+# Meterpreter Useful Commands (Windows)
 ---
 ~~~
 getsystem
