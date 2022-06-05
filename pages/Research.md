@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Windows
+title: Research
 permalink: /windows/
 ---
 
