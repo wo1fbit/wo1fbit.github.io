@@ -75,7 +75,7 @@ e(abc)--> ldw
 ~~~
 
 ### <mark>2 Cryptanalysis </mark>
-**Cryptanalysis** is study of ciphers, ciphertext and cryptosystems to better understand of how they work with th aim of finding ways to defeat/weaken them.
+**Cryptanalysis** is study of ciphers, ciphertext and cryptosystems to better understand of how they work with the aim of finding ways to defeat/weaken them.
 
 There are often many possible attack approaches (attack vectors)
 #### Classes of Cryptanalysis
