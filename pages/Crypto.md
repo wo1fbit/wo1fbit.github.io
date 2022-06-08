@@ -4,9 +4,9 @@ title: Crypto
 permalink: /Cryptography/
 ---
 
-###### Cryptography Notes
+## Cryptography Notes
 
-# <mark> CRYPTOLOGY </mark>
+# CRYPTOLOGY
 ---
 **Classification**
 ~~~
@@ -14,7 +14,7 @@ permalink: /Cryptography/
 * Cryptanalysis.
 ~~~
 
-## <mark> 1. Cryptography. </mark>
+## 1. Cryptography
 ---
 Cryptography is the study of secure communications techniques that allow only the sender and intended recipient of a message to view its contents.
 
@@ -27,7 +27,7 @@ Cryptography is the study of secure communications techniques that allow only th
 
 **<mark>Kerckhoff's Principle</mark>** - a cryptosystem should remain secure even if the attacker knows all the details about the system, except the key.
 
-### <mark> 1.1 Symmetric Cryptography. </mark>
+### 1.1 Symmetric Cryptography.
 In Symmetric encryption the same key is used to encrypt and decrypt the message.
 
 ~~~
@@ -60,7 +60,7 @@ e(abc)--> ldw
 1. Bruteforce
 2. Letter Frequency Analysis.\
 
-### <mark> 1.2 Asymmetric Cryptography. </mark>
+### 1.2 Asymmetric Cryptography
 
 ---
 
@@ -75,7 +75,8 @@ e(abc)--> ldw
 * k/key = key, |k| = keyspace (number of keys)
 ~~~
 
-### <mark>2 Cryptanalysis </mark>
+### 2 Cryptanalysis
+---
 **Cryptanalysis** is study of ciphers, ciphertext and cryptosystems to better understand of how they work with the aim of finding ways to defeat/weaken them.
 
 There are often many possible attack approaches (attack vectors)
