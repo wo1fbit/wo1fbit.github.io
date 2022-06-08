@@ -45,6 +45,7 @@ In Symmetric encryption the same key is used to encrypt and decrypt the message.
 - historical cipher
 - operates on letters
 - replaces every letter with another one which is fixed
+
 ~~~
 Examples
 --------
@@ -54,6 +55,9 @@ c --> w
 e(abc)--> ldw
 ~~~
 
+#### Possible Attakcs
+1. Bruteforce
+2. Letter Frequency Analysis.\
 
 ### <mark> 1.2 Asymmetric Cryptography. </mark>
 
