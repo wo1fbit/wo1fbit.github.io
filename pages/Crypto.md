@@ -80,6 +80,8 @@ e(abc)--> ldw
 There are often many possible attack approaches (attack vectors)
 #### Classes of Cryptanalysis
 ~~~
-* Classical --Bruteforce.
-            |_Analytical Attacks.
+* Classical --Bruteforce
+            |_Analytical Attacks
+* Social Engineering
+* Implementation
 ~~~
