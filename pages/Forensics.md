@@ -7,8 +7,7 @@ permalink: /Forensics/
 # Forensic Notes
 ---
 
-These are notes that I take while doing Forensics challenges on BTLO (Blue team Labs Online) and other platforms. I will use them in the future as refernce.
- I hope they will be of use to anyone interested in computer Forensics.
+These are notes that I take while doing Forensics challenges on BTLO (Blue team Labs Online) and other platforms. I will use them in the future as a reference. I hope they will be of use to anyone interested in computer Forensics.
 
 ## Using Hashcat To Break Password Protected Files
 ---
