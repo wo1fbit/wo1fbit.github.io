@@ -58,22 +58,7 @@ e(abc)--> ldw
 
 #### Possible Attakcs
 1. Bruteforce
-2. Letter Frequency Analysis.\
-
-### 1.2 Asymmetric Cryptography
-
----
-
-## Index
----
-~~~
-* Channel - medium of communication. Examples: internet, airwaves, GSM, WiFi
-* p = plaintext
-* c = ciphertext
-* e = encryption algorithm
-* d - decryption algorithm
-* k/key = key, |k| = keyspace (number of keys)
-~~~
+2. Letter Frequency Analysis.
 
 ### 2 Cryptanalysis
 ---
@@ -86,4 +71,16 @@ There are often many possible attack approaches (attack vectors)
             |_Analytical Attacks
 * Social Engineering
 * Implementation
+~~~
+
+
+## Index
+---
+~~~
+* Channel - medium of communication. Examples: internet, airwaves, GSM, WiFi
+* p = plaintext
+* c = ciphertext
+* e = encryption algorithm
+* d - decryption algorithm
+* k/key = key, |k| = keyspace (number of keys)
 ~~~
