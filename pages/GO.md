@@ -84,15 +84,14 @@ func main() {
 
 ## <mark>Functions</mark>
 ~~~
-To create a function you use "func" followed by the function name e.g
+To create a function you use "func" followed by the function name i.e
 ~~~
 
-~~~
 ```go:
 func hello(){
 }
 ```
-~~~
+
 ---
 ### Function with no arguments
 ```go:
