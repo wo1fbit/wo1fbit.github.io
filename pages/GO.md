@@ -239,19 +239,19 @@ import (
 )
 
 func main() {
-`// WRITE TO FILE
-`file, err := os.Create("Filename")
-`if err == nil {
- `data, err := os.WriteString("What to write") **add contents to the file**
- `if err != nil {
-  `fmt.Println("Failed to write to file")
- `}
-`}
+// WRITE TO FILE
+ file, err := os.Create("Filename")
+ if err == nil {
+  data, err := os.WriteString("What to write") **add contents to the file**
+  if err != nil {
+   fmt.Println("Failed to write to file")
+  }
+ }
 
-`// READ FROM FILE
-`data, err := os.ReadFile("Filename")
-`if err == nil {
- `fmt.Println(string(data))
-`}
+ // READ FROM FILE
+ data, err := os.ReadFile("Filename")
+ if err == nil {
+  fmt.Println(string(data))
+ }
 }
 ~~~
