@@ -30,7 +30,6 @@ func main() {
 }
 
 ```
-
 ---
 
 ## <mark>Declare variables</mark>
@@ -67,7 +66,6 @@ func main(){
   )
 }
 ```
-
 ---
 
 ## <mark>Set Constants</mark>
@@ -82,7 +80,6 @@ func main() {
   fmt.Println(y)
 }
 ```
-
 ---
 
 ## <mark>Functions</mark>
@@ -92,7 +89,7 @@ To create a function you use "func" followed by the function name e.g
 func hello(){
 }
 ```
-
+---
 ### Function with no arguments
 ```go:
 package main
@@ -106,7 +103,7 @@ func main(){
   hello_function()
 }
 ```
-
+---
 ### Function with arguments
 ```go:
 package main
@@ -120,7 +117,7 @@ func main(){
   say_hello("Hello World")
 }
 ```
-
+---
 ### Function with multiple arguments
 ```go:
 package main
@@ -135,7 +132,7 @@ func main() {
   say_hello_and_print_number("Hello World", 15)
 }
 ```
-
+---
 ### Functions with arbitrary number of arguments/Variadic functions
 ```go:
 package main
@@ -149,7 +146,6 @@ func main() {
   arb.args(1, 56, 78, 90)
 }
 ```
-
 ---
 
 ## <mark>Loops</mark>
@@ -176,7 +172,6 @@ func main() {
 }
 
 ```
-
 ---
 
 ## <mark>Control Statements</mark>
@@ -211,6 +206,7 @@ func main(){
   }
 }
 ```
+---
 
 ## <mark>Switch ..Case</mark>
 ```go:
@@ -232,7 +228,6 @@ func main() {
 }
 
 ```
-
 ---
 
 ## <mark>Read / Write files</mark>
