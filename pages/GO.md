@@ -1,11 +1,11 @@
 ---
 layout: page
-title: golang
+title: Go
 permalink: /golang/
 ---
 
-# GOLANG
-## IMPORTANT
+### GOLANG
+### IMPORTANT
 
 1. "package main" is a must, tells the Go compiler that the package should compile as an executable program instead of a shared library
 2. The "main()" function is a must, when the program is executed, it is the entry point.
