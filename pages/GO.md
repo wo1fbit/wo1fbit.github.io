@@ -1,6 +1,6 @@
 ---
 layout: page
-title: GOLANG | Wolf
+title: golang
 permalink: /golang/
 ---
 
