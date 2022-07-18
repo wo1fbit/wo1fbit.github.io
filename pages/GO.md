@@ -138,7 +138,7 @@ func main() {
 package main
 import "fmt"
 
-func arb_args(num ...int){
+func arb_args(nums ...int){
   fmt.Print(nums, " ")
 }
 func main() {
