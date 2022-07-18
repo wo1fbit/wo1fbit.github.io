@@ -12,7 +12,7 @@ permalink: /golang/
 3. All variables, constants, arrays, slices, maps etc.. and their datatypes must be declared before usage
 
 ## Print to output
-~~~
+```go:
 package main
 import "fmt"
 
@@ -28,7 +28,7 @@ func main() {
   fmt.Printf("%s", x)
 }
 
-~~~
+```
 
 ---
 
