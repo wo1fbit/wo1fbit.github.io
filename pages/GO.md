@@ -1,10 +1,10 @@
 ---
 layout: page
 title: Go
-permalink: /golang/
+permalink: /GOlang/
 ---
 
-### GOLANG
+### <mark>golang</mark>
 ### IMPORTANT
 
 1. "package main" is a must, tells the Go compiler that the package should compile as an executable program instead of a shared library
