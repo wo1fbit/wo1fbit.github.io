@@ -149,7 +149,9 @@ func main() {
 ---
 
 ## <mark>Loops</mark>
-go has only one loop - THe "for" loop
+~~~
+technically go has only one loop - the "for" loop.
+~~~
 
 ```go:
 package main
