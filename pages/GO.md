@@ -19,7 +19,7 @@ import "fmt"
 
 // 1st method
 func main() {
-  fmt.Println("Hello world")
+  fmt.Println("Hello world") //this is a comment
   fmt.Printf("Hello world")
 }
 
