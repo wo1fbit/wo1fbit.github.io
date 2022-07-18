@@ -11,7 +11,8 @@ permalink: /golang/
 2. The "main()" function is a must, when the program is executed, it is the entry point.
 3. All variables, constants, arrays, slices, maps etc.. and their datatypes must be declared before usage
 
-## Print to output
+## <mark>Print to output</mark>
+
 ```go:
 package main
 import "fmt"
@@ -32,7 +33,8 @@ func main() {
 
 ---
 
-## Declare variables
+## <mark>Declare variables</mark>
+
 ```go:
 package main
 import "fmt"
@@ -68,7 +70,7 @@ func main(){
 
 ---
 
-## Set Constants
+## <mark>Set Constants</mark>
 ```go:
 package main
 import "fmt"
@@ -83,14 +85,15 @@ func main() {
 
 ---
 
-## Functions
+## <mark>Functions</mark>
 To create a function you use "func" followed by the function name e.g
-```go:
+
+  ```go:
 func hello(){
 }
 ```
 
-**Function with no arguments**
+### Function with no arguments
 ```go:
 package main
 import fmt
@@ -104,7 +107,7 @@ func main(){
 }
 ```
 
-**Function with arguments**
+### Function with arguments
 ```go:
 package main
 import "fmt"
@@ -118,7 +121,7 @@ func main(){
 }
 ```
 
-**Function with multiple arguments***
+### Function with multiple arguments
 ```go:
 package main
 import "fmt"
@@ -133,7 +136,7 @@ func main() {
 }
 ```
 
-**Functions with arbitrary number of arguments/Variadic functions**
+### Functions with arbitrary number of arguments/Variadic functions
 ```go:
 package main
 import "fmt"
@@ -149,8 +152,9 @@ func main() {
 
 ---
 
-## Loops
+## <mark>Loops</mark>
 go has only one loop - THe "for" loop
+
 ```go:
 package main
 import "fmt"
@@ -175,7 +179,7 @@ func main() {
 
 ---
 
-## Control Statements
+## <mark>Control Statements</mark>
 
 ### If statements
 ```go:
@@ -208,7 +212,7 @@ func main(){
 }
 ```
 
-## Switch ..Case
+## <mark>Switch ..Case</mark>
 ```go:
 package main
 import "fmt"
@@ -231,7 +235,8 @@ func main() {
 
 ---
 
-## Read / Write files
+## <mark>Read / Write files</mark>
+
 ```go:
 package main
 import (
