@@ -33,7 +33,7 @@ func main() {
 ---
 
 ## Declare variables
-~~~
+```go:
 package main
 import "fmt"
 
@@ -64,12 +64,12 @@ func main(){
       b = "Hello World"
   )
 }
-~~~
+```
 
 ---
 
 ## Set Constants
-~~~
+```go:
 package main
 import "fmt"
 
@@ -79,19 +79,19 @@ func main() {
   fmt.Println(x)
   fmt.Println(y)
 }
-~~~
+```
 
 ---
 
 ## Functions
 To create a function you use "func" followed by the function name e.g
-~~~
+```go:
 func hello(){
 }
-~~~
+```
 
 **Function with no arguments**
-~~~
+```go:
 package main
 import fmt
 
@@ -102,10 +102,10 @@ func hello_function(){
 func main(){
   hello_function()
 }
-~~~
+```
 
 **Function with arguments**
-~~~
+```go:
 package main
 import "fmt"
 
@@ -116,10 +116,10 @@ func say_hello(p string) {
 func main(){
   say_hello("Hello World")
 }
-~~~
+```
 
 **Function with multiple arguments***
-~~~
+```go:
 package main
 import "fmt"
 
@@ -131,10 +131,10 @@ func say_hello_and_print_number(p string, x int){
 func main() {
   say_hello_and_print_number("Hello World", 15)
 }
-~~~
+```
 
 **Functions with arbitrary number of arguments/Variadic functions**
-~~~
+```go:
 package main
 import "fmt"
 
@@ -145,12 +145,13 @@ func main() {
   arb_args(1, 2)
   arb.args(1, 56, 78, 90)
 }
-~~~
+```
 
 ---
+
 ## Loops
 go has only one loop - THe "for" loop
-~~~
+```go:
 package main
 import "fmt"
 
@@ -170,14 +171,14 @@ func main() {
   }
 }
 
-~~~
+```
 
 ---
 
 ## Control Statements
 
 ### If statements
-~~~
+```go:
 package main
 import "fmt"
 
@@ -205,10 +206,10 @@ func main(){
     fmt.Println("I don't know waht X is equal to")
   }
 }
-~~~
+```
 
 ## Switch ..Case
-~~~
+```go:
 package main
 import "fmt"
 
@@ -226,12 +227,12 @@ func main() {
   }
 }
 
-~~~
+```
 
 ---
 
 ## Read / Write files
-~~~
+```go:
 package main
 import (
   "fmt"
@@ -254,4 +255,4 @@ func main() {
   fmt.Println(string(data))
  }
 }
-~~~
+```
