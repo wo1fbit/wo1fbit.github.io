@@ -9,7 +9,7 @@ permalink: /golang/
 
 1. "package main" is a must, tells the Go compiler that the package should compile as an executable program instead of a shared library
 2. The "main()" function is a must, when the program is executed, it is the entry point.
-3. All variables, constants ... must be declared before usage
+3. All variables, constants, arrays, slices, maps etc.. and their datatypes must be declared before usage
 
 ## Print to output
 ~~~
