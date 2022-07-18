@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Go
-permalink: /GOlang/
+permalink: /golang/
 ---
 
 ### <mark>golang</mark>
