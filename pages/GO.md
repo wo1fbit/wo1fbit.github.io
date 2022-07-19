@@ -246,7 +246,7 @@ func main() {
 // WRITE TO FILE
  file, err := os.Create("Filename")
  if err == nil {
-  data, err := os.WriteString("What to write") **add contents to the file**
+  _, err := file.WriteString("What to write") **add contents to the file**
   if err != nil {
    fmt.Println("Failed to write to file")
   }
