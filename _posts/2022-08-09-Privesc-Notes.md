@@ -7,7 +7,7 @@ excerpt_separator: <!--more-->
 <!--more-->
 
 # Setuid & Setgid
-The setid(set user identity) and setgid(set group identity) are flags that allow users to run an executable with the permissions of the owner or group.
+The setuid(set user identity) and setgid(set group identity) are flags that allow users to run an executable with the permissions of the owner or group.
 
 1. find / -perm /4000  - find files with the suid bit set
 2. find / -perm /2000 - find files with the sgid bit set
