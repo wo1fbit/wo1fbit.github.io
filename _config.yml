@@ -12,7 +12,7 @@ favicon: assets/favicon.ico                             # Icon displayed in the 
 header_text: Wo1f # Change Blog header text
 header_feature_image: assets/img/header/header2.png
 header_feature_image_responsive: true
-footer_text: Powered by wolfbit
+footer_text: Powered by wolf.rocks
 
 # Blog
 excerpt: true                                           # Or "truncate" (first 250 characters), "false" to disable
@@ -32,7 +32,7 @@ katex: true                                             # Enable if using math m
 mermaid: true                                           # Enable mermaid-js for sequence and diagrams
 google_analytics: G-K5F47W1CBL                          # Tracking ID, e.g. "UA-000000-01"
 cookie_consent: false                                   # To respect the usage of cookies
-color_theme: auto                                       # auto, dark or light
+color_theme: dark                                       # auto, dark or light
 
 # Comments
 comments:
