@@ -31,7 +31,7 @@ plugins: [jekyll-paginate, jekyll-seo-tag, jekyll-feed]
 katex: true                                             # Enable if using math markup
 mermaid: true                                           # Enable mermaid-js for sequence and diagrams
 google_analytics: G-K5F47W1CBL                          # Tracking ID, e.g. "UA-000000-01"
-cookie_consent: false                                   # To respect the usage of cookies
+cookie_consent: true                                    # To respect the usage of cookies
 color_theme: dark                                       # auto, dark or light
 
 # Comments
