@@ -1,6 +1,6 @@
 ---
 layout: Page
-title: Priviledge Escalation
+title: Privesc
 permalink: /Privesc/
 ---
 
