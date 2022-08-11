@@ -19,8 +19,8 @@ The setuid(set user identity) and setgid(set group identity) are flags that allo
 # Capabilities
 Linux capabilities are special attributes in the Linux kernel that grant processes and binary executables specific privileges that are normally reserved for processes whose effective user ID is 0.
 
-1. getcap - get capabilities
-2. setcap - set capabilities
+1. getcap - get capabilities e.g getcap -r / 2>/dev/null
+2. setcap - set capabilities e.g setcap "Capabilites to set" /path/to/file
 
 To see all linux capabilities use **man 7 capabilities**
 
