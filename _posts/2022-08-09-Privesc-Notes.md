@@ -6,6 +6,9 @@ excerpt_separator: <!--more-->
 
 <!--more-->
 
+# Sudo -l
+Run this command to see what the current user can run as root. You might find something misconfigured (the wrong program given the right permissions :laughing: )
+
 # Setuid & Setgid
 The setuid(set user identity) and setgid(set group identity) are flags that allow users to run an executable with the permissions of the owner or group.
 
@@ -19,3 +22,14 @@ Linux capabilities are special attributes in the Linux kernel that grant process
 2. setcap - set capabilities
 
 To see all linux capabilities use **man 7 capabilities**
+
+# World-Writable Files
+Sometimes you want to look for files that you can edit. You might discover that you can edit /etc/passwd or /etc/shadow.
+
+1. find / -type f -perm /0777 2>/dev/null - find world-writeable files in the whole system
+2. find / -type d -perm /0777 2>/dev/null - find world-writeable directories in the whole system
+
+# Cron Jobs
+Find automated jobs that run with priviledged permissions.
+
+1. cat /etc/crontab - check for cronjobs
