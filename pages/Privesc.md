@@ -30,6 +30,7 @@ Sometimes you want to look for files that you can edit. You might discover that 
 3. find / -xdev -user root -perm -a+w -name hello - look for a file called "hello" owned by root and is world-writable.(-xdev, meaning not to recurse underneath mount points such as /proc and /sys. The "-" before the permissions means that the file must have at least these permissions; without it find would look for a file having exactly the specified permissions.) With GNU find, you can also look for a file that is writable by the user running find: replace -perm -u+w by -writable.
 
 # Cron Jobs
-Find automated jobs that run with priviledged permissions.
+Find automated jobs that run with priviledged permissions. The administrators' files are kept in /etc/crontab, and there is a /etc/cron.d directory that programs can use to store their own schedule files.
 
 1. cat /etc/crontab - check for cronjobs
+2. /etc/cron.d directory might be a jackpot
