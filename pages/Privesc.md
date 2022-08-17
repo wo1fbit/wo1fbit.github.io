@@ -27,3 +27,18 @@ To see all linux capabilities use **man 7 capabilities**
 1. /etc/crontab
 2. /etc/cron.d
 3. /etc/doas.conf
+
+# NFS Shares
+The Network File System (NFS) is a mechanism for storing files on a network. It is a distributed file system that allows users to access files and directories located on remote computers and treat those files and directories as if they were local.
+
+By default, NFS shares change the root user to the nfsnobody user, an unprivileged user account.
+In this way, all root-created files are owned by nfsnobody, which prevents uploading of programs with the setuid bit set.
+
+## no_root_squash
+Allows root users on client computers to have root access on the server. Mount requests for root are not be mounted to the anonomous user. This option is needed for diskless clients. This is a good privesc vector if vuln is found.
+
+# root_squash
+Requests from root clients are mapped to the nobody user and group ID so they will only have file privileges associated with other.
+
+ro - read only access
+rw - read write access 
