@@ -40,7 +40,7 @@ In this way, all root-created files are owned by nfsnobody, which prevents uploa
 ## no_root_squash
 Allows root users on client computers to have root access on the server. Mount requests for root are not be mounted to the anonomous user. This option is needed for diskless clients. This is a good privesc vector if vuln is found.
 
-# root_squash
+## root_squash
 Requests from root clients are mapped to the nobody user and group ID so they will only have file privileges associated with other.
 
 ro - read only access
