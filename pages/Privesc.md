@@ -28,6 +28,7 @@ To see all linux capabilities use **man 7 capabilities**
 2. /etc/cron.d
 3. /etc/doas.conf
 4. /etc/exports
+5. /etc/apache2/.htpasswd
 
 # NFS Shares
 The Network File System (NFS) is a mechanism for storing files on a network. It is a distributed file system that allows users to access files and directories located on remote computers and treat those files and directories as if they were local.
