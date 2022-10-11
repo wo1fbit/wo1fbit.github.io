@@ -1,0 +1,987 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.0, mkdocs-material-8.5.6">
+    
+    
+      
+        <title>Urchinsec 2022 - WOLF</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.20d9efc8.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.cbb835fc.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#8bc34b">
+        
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="light-green" data-md-color-accent="indigo">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#urchinsec-ctf-2022" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="WOLF" class="md-header__button md-logo" aria-label="WOLF" data-md-component="logo">
+      
+  <img src="../../assets/logo.jpg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            WOLF
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Urchinsec 2022
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../Ctf/" class="md-tabs__link">
+      Writeups
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../Go/" class="md-tabs__link">
+      Go
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../Privesc/" class="md-tabs__link">
+      Privesc
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Programming/Assembly/Commandline/" class="md-tabs__link">
+        Programming
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../2022-01-22-knight-ctf/" class="md-tabs__link md-tabs__link--active">
+        Writeups
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="WOLF" class="md-nav__button md-logo" aria-label="WOLF" data-md-component="logo">
+      
+  <img src="../../assets/logo.jpg" alt="logo">
+
+    </a>
+    WOLF
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Ctf/" class="md-nav__link">
+        Writeups
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Go/" class="md-nav__link">
+        Go
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Privesc/" class="md-nav__link">
+        Privesc
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          Programming
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Programming" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Programming
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_1" type="checkbox" id="__nav_5_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_1">
+          Assembly
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Assembly" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_1">
+          <span class="md-nav__icon md-icon"></span>
+          Assembly
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Programming/Assembly/Commandline/" class="md-nav__link">
+        Commandline Arguments
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          Writeups
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Writeups" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Writeups
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2022-01-22-knight-ctf/" class="md-nav__link">
+        KNIGHT CTF 2022
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2022-02-26-mhsctf-2022/" class="md-nav__link">
+        MHSCTF 2022
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Urchinsec 2022
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Urchinsec 2022
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#challs" class="md-nav__link">
+    Challs
+  </a>
+  
+    <nav class="md-nav" aria-label="Challs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#chall-1-around-100-points" class="md-nav__link">
+    Chall 1: Around 100-points
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chall-2-panel-100-points" class="md-nav__link">
+    Chall 2: Panel 100-points
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chall-3-en-code-100-points" class="md-nav__link">
+    Chall 3: En-Code 100-points.
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chall-4-headstart-150-points" class="md-nav__link">
+    Chall 4: HeadStart 150-points
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chall-5-route-150-points" class="md-nav__link">
+    Chall 5: Route 150-points
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chall-6-login-150-points" class="md-nav__link">
+    Chall 6: Login 150-points
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chall-7-route-ii-150-points" class="md-nav__link">
+    Chall 7: Route II 150-points
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2022-05-20-JWT/" class="md-nav__link">
+        JSON WEB TOKENS (JWT)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2022-06-08-Late-Writeup/" class="md-nav__link">
+        Late HTB Writeup
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2022-06-08-Pandora-Writeup/" class="md-nav__link">
+        Pandora HTB Writeup
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2022-07-23-Wgel-CTF/" class="md-nav__link">
+        THM Easy Box - Wgel CTF
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2022-07-23-basic-Pentesting/" class="md-nav__link">
+        2022 07 23 basic Pentesting
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#challs" class="md-nav__link">
+    Challs
+  </a>
+  
+    <nav class="md-nav" aria-label="Challs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#chall-1-around-100-points" class="md-nav__link">
+    Chall 1: Around 100-points
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chall-2-panel-100-points" class="md-nav__link">
+    Chall 2: Panel 100-points
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chall-3-en-code-100-points" class="md-nav__link">
+    Chall 3: En-Code 100-points.
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chall-4-headstart-150-points" class="md-nav__link">
+    Chall 4: HeadStart 150-points
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chall-5-route-150-points" class="md-nav__link">
+    Chall 5: Route 150-points
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chall-6-login-150-points" class="md-nav__link">
+    Chall 6: Login 150-points
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chall-7-route-ii-150-points" class="md-nav__link">
+    Chall 7: Route II 150-points
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="urchinsec-ctf-2022">URCHINSEC CTF 2022</h1>
+<p><img alt="image" src="https://user-images.githubusercontent.com/96860148/156925746-84bb59c1-ca95-4b50-96ed-1a3dc4fdaa8e.png" /></p>
+<p>Overall it was an easy ctf, very easy. I do not know anything about rev but I was able to solve some. This should tell you something.</p>
+<p>This was a jeopardy type CTF that was hosted by UrchinSec. It was not a team event and I went solo with some of my teammates.
+Aim was for the team <a href="https://twitter.com/fr334aksmini">@fr44aksmini</a> to lead the scoreboard :). I bagged the 6th positon with 2840 points.</p>
+<!--more-->
+
+<p><img alt="image" src="https://user-images.githubusercontent.com/96860148/156926106-1d668701-f434-4a53-9c5e-00cd1df8ae54.png" /></p>
+<p>As  usual I took web security but due to competition 😸 I had to do other challs but the focus of this writeup is only on WebSec .
+In total there were eight challs and I was able to solve all except the eighth one.</p>
+<h2 id="challs">Challs</h2>
+<ul>
+<li>Around 100-points</li>
+<li>Panel 100-points</li>
+<li>En-Code 100-points</li>
+<li>HeadStart 150-points</li>
+<li>Route 150-points</li>
+<li>Login 150-points</li>
+<li>Route II 150-points</li>
+<li>Refer 150-points(Unable to solve)</li>
+</ul>
+<h3 id="chall-1-around-100-points">Chall 1: Around 100-points</h3>
+<p>The site says....</p>
+<p><img alt="image" src="https://user-images.githubusercontent.com/96860148/156926398-7fc6d873-9491-49d0-9cff-73db7552c964.png" /></p>
+<p>This was a really straight-forward hint. When I'm told to look around the first thing I look is the <strong>robots.txt</strong> file.</p>
+<p><img alt="image" src="https://user-images.githubusercontent.com/96860148/156926468-bd8dba79-8ccc-4b5a-8561-bd05b0a998e0.png" /></p>
+<p>We've got a part of the flag. Next checking the source code, there is nothing interesting apart from two files : main.css and js/main.js.
+Checking them out gives me the last parts of the flag.</p>
+<p><strong>main.css</strong></p>
+<p><img alt="image" src="https://user-images.githubusercontent.com/96860148/156926535-fa93aa82-daf5-4e16-922a-44760e52229c.png" /></p>
+<p><strong>js/main.js</strong></p>
+<p><img alt="image" src="https://user-images.githubusercontent.com/96860148/156926555-11b64144-baa8-4fe4-90ee-7e0dbb62420b.png" /></p>
+<p>And that is how you get a 100 points flag. :rofl:</p>
+<h3 id="chall-2-panel-100-points">Chall 2: Panel 100-points</h3>
+<p>A login...</p>
+<p><img alt="image" src="https://user-images.githubusercontent.com/96860148/156926712-e26d2346-dce0-4245-b6d3-c46591a91d72.png" /></p>
+<p>As usual the first thing to check is the <strong>robots.txt</strong> and I'm not disappointed 😀</p>
+<p><img alt="image" src="https://user-images.githubusercontent.com/96860148/156926970-b7cd4778-6634-43fd-8295-180a2071a61f.png" /></p>
+<p>We are not supposed to see <strong>secret.php</strong> but what the heck. Forbidden fruits are sweeter. 😈
+secret.php says</p>
+<p><img alt="image" src="https://user-images.githubusercontent.com/96860148/156927088-166a38f5-c1c2-4cc2-8b31-03a5e9123f91.png" /></p>
+<p>From the script we get that the username is <strong>admin</strong> and the pass is a base64 encoded string <strong>$pass_string = "V1ZkU2RHRlhOV2hrUjFaclRWUkplazVCYnowSwo=";</strong>
+which has been encoded three times. So we decode for them...</p>
+<p><img alt="image" src="https://user-images.githubusercontent.com/96860148/156927239-0f663223-b5e6-4eb8-974f-301bd62fea9f.png" /></p>
+<p>Logging in we get the flag</p>
+<p><img alt="image" src="https://user-images.githubusercontent.com/96860148/156927273-77d4c7be-055e-4aae-a3c2-05d7b9a25199.png" /></p>
+<h3 id="chall-3-en-code-100-points">Chall 3: En-Code 100-points.</h3>
+<p>Site says...</p>
+<p><img alt="image" src="https://user-images.githubusercontent.com/96860148/156930507-f6a7f0ad-3ac4-4732-9019-54979607b239.png" /></p>
+<p>source code:</p>
+<p><img alt="image" src="https://user-images.githubusercontent.com/96860148/156930541-d858cf6b-18c2-483f-bae7-eb271ce76a8f.png" /></p>
+<p>The part in green looks like a flag. Using <a href="https://www.dcode.fr/cipher-identifier">dcode's</a> cipher identifier we get know the flag is encoded in ASCII85.</p>
+<p><img alt="image" src="https://user-images.githubusercontent.com/96860148/156930635-eb8b61c0-a712-4be7-83dd-34b22696e1eb.png" /></p>
+<p>Decoding it we get the flag:</p>
+<p><img alt="image" src="https://user-images.githubusercontent.com/96860148/156930676-025031b6-9d90-4f5a-bd4d-b3941a74dcd2.png" /></p>
+<h3 id="chall-4-headstart-150-points">Chall 4: HeadStart 150-points</h3>
+<p>Visiting the site we get an API endpoint error..</p>
+<p><img alt="image" src="https://user-images.githubusercontent.com/96860148/156930769-6a939874-c2f1-423a-b666-c934963bb525.png" /></p>
+<p>This automatically shifts my brain for directory bruteforcing. Here comes Mr.Dirsearch.</p>
+<p><img alt="image" src="https://user-images.githubusercontent.com/96860148/156931309-e9d93adf-fba8-4a17-83f5-8cb7c622170c.png" /></p>
+<p>We can see two valid directories: <strong>/console</strong> and <strong>/source</strong>. The subdirectory /console is a rabbit hole and source is where I hit gold:</p>
+<pre><code>@app.route('/getflag', methods=[&quot;PEWPEW&quot;])
+def getflag():
+    if request.method != 'PEWPEW':
+        data = {'error':'something went wrong'}
+        return jsonify(data)
+    else:
+        data = {'success':f'{flag}'}
+        return jsonify(data)
+</code></pre>
+<p>There is an API endpoint <strong>/getflag</strong> and it uses http method "PEWPEW" (seriously who thought of the name!!!!). So I head out and using the network tab in developer tools change the method to PEWPEW to get the flag:</p>
+<p><img alt="image" src="https://user-images.githubusercontent.com/96860148/156931220-15bcb7e2-9eb3-41dc-ac58-580c9eaf0ab9.png" /></p>
+<h3 id="chall-5-route-150-points">Chall 5: Route 150-points</h3>
+<p><img alt="image" src="https://user-images.githubusercontent.com/96860148/156931388-138a376a-afaa-4fbd-87de-ef38d92e89b9.png" /></p>
+<p>Clicking around to get a feel of how the site behaves, the download button prompts you to download a file..</p>
+<p><img alt="image" src="https://user-images.githubusercontent.com/96860148/156931443-ce6e6545-a2ae-4e4d-8203-1a9e457dce99.png" /></p>
+<p>This could lead to something sweeter. Checking out the source code where the download button is we get..</p>
+<pre><code>&lt;nav&gt;
+                &lt;ul class=&quot;nav-links&quot;&gt;
+                    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;About&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Service&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href=&quot;download.php?file=document.txt&quot;&gt;Download&lt;/a&gt;
+                    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Capture The Flag&lt;/a&gt;&lt;/li&gt;
+                &lt;/ul
+</code></pre>
+<p>On clicking the docunent part while in source code changes the url to..</p>
+<p><img alt="image" src="https://user-images.githubusercontent.com/96860148/156931560-783b97c2-25de-4499-a5b7-65537aff0711.png" /></p>
+<p>...and we can be able to view the contents. What if we changed the url to flag.txt... 😈</p>
+<p><img alt="image" src="https://user-images.githubusercontent.com/96860148/156931625-e66e77d2-f441-4f27-9732-2a4dc52dc8a8.png" /></p>
+<h3 id="chall-6-login-150-points">Chall 6: Login 150-points</h3>
+<p>Website says..</p>
+<p><img alt="image" src="https://user-images.githubusercontent.com/96860148/156931678-06a21d41-8296-4f70-9c3b-4fa6105ee1da.png" /></p>
+<p>The source code reveals a js file that is obfuscated. Seriously people, the obfuscation automatically tells me that there is something juicy here</p>
+<pre><code>var _0x18b3=[&quot;\x6C\x6F\x61\x64&quot;,&quot;\x61\x64\x64\x45\x76\x65\x6E\x74\x4C\x69\x73\x74\x65\x6E\x65\x72&quot;,
+&quot;\x73\x75\x62\x6D\x69\x74&quot;,&quot;\x70\x72\x65\x76\x65\x6E\x74\x44\x65\x66\x61\x75\x6C\x74&quot;,&quot;\x69\x6E\x70\
+x75\x74\x5B\x6E\x61\x6D\x65\x3D\x75\x73\x65\x72\x6E\x61\x6D\x65\x5D&quot;,&quot;\x69\x6E\x70\x75\x74\x5B\x6E\x61\
+x6D\x65\x3D\x70\x61\x73\x73\x77\x6F\x72\x64\x5D&quot;,&quot;&quot;,&quot;\x72\x65\x70\x6C\x61\x63\x65&quot;,&quot;\x76\x61\x6C
+\x75\x65&quot;,&quot;\x71\x75\x65\x72\x79\x53\x65\x6C\x65\x63\x74\x6F\x72&quot;,&quot;\x59\x57\x52\x74\x61\x57\x34&quot;,&quot;\x75&quot;,&quot;
+\x49\x6E\x63\x6F\x72\x72\x65\x63\x74\x20\x55\x73\x65\x72\x6E\x61\x6D\x65&quot;,&quot;\x64\x58\x4A\x6A\x61\x47\x6C\
+x75\x65\x33\x42\x6C\x64\x31\x39\x77\x5A\x58\x64\x66\x63\x47\x56\x33\x58\x33\x42\x6C\x64\x31\x39\x77\x5A\x5
+8\x64\x66\x63\x47\x56\x33\x66\x51\x6F&quot;,&quot;\x70&quot;,&quot;\x49\x6E\x63\x6F\x72\x72\x65\x63\x74\x20\x50\x61\x73\x73\x7
+7\x6F\x72\x64&quot;,&quot;\x43\x6F\x72\x72\x65\x63\x74\x20\x50\x61\x73\x73\x77\x6F\x72\x64\x21\x20\x59\x6F\x75\x72\x
+20\x66\x6C\x61\x67\x20\x69\x73\x20&quot;,&quot;\x2E&quot;,&quot;\x66\x6F\x72\x6D&quot;];(async ()=&gt;{ await  new Promise(((_0x1f3ax1)=&gt;
+{return window[_0x18b3[1]](_0x18b3[0],_0x1f3ax1)})),document[_0x18b3[9]](_0x18b3[18])[_0x18b3[1]](_0x18b3[2],(
+(_0x1f3ax1)=&gt;{_0x1f3ax1[_0x18b3[3]]();const _0x1f3ax2={u:_0x18b3[4],p:_0x18b3[5]},_0x1f3ax3={};for(const _0x1f
+3ax1 in _0x1f3ax2){_0x1f3ax3[_0x1f3ax1]= btoa(document[_0x18b3[9]](_0x1f3ax2[_0x1f3ax1])[_0x18b3[8]])[_0x18b3[
+7]](/=/g,_0x18b3[6])};return _0x18b3[10]!== _0x1f3ax3[_0x18b3[11]]?alert(_0x18b3[12]):_0x18b3[13]!== _0x1f3ax3
+[_0x18b3[14]]?alert(_0x18b3[15]):void(alert(`${_0x18b3[16]}${atob(_0x1f3ax3[_0x18b3[14]])}${_0x18b3[17]}`))}))})()
+</code></pre>
+<p>Heading to <a href="https://deobfuscate.io/">deobfuscate.io</a> I'm able to know what the js is doing. </p>
+<pre><code>(async () =&gt; {
+  await new Promise(vandan =&gt; {
+    return window.addEventListener(&quot;load&quot;, vandan);
+  }), document.querySelector(&quot;form&quot;).addEventListener(&quot;submit&quot;, yanelie =&gt; {
+    yanelie.preventDefault();
+    const reshaud = {u: &quot;input[name=username]&quot;, p: &quot;input[name=password]&quot;}, predrag = {};
+    for (const alene in reshaud) {
+      predrag[alene] = btoa(document.querySelector(reshaud[alene]).value).replace(/=/g, &quot;&quot;);
+    }
+    ;
+    return &quot;YWRtaW4&quot; !== predrag.u ? alert(&quot;Incorrect Username&quot;) : &quot;dXJjaGlue3Bld19wZXdfcGV3X3Bld19wZXdfcGV3fQo&quot; !== predrag.p ? alert(&quot;Incorrect Password&quot;) : void alert(`${&quot;Correct Password! Your flag is &quot;}${atob(predrag.p)}${&quot;.&quot;}`);
+  });
+})();
+</code></pre>
+<p>The username and pass are base64 encoded and the pass is the flag. As usual I help these guys break their site.. 😈</p>
+<p><img alt="image" src="https://user-images.githubusercontent.com/96860148/156931934-b2f946dd-a9e7-4477-a973-85433c6192ac.png" /></p>
+<h3 id="chall-7-route-ii-150-points">Chall 7: Route II 150-points</h3>
+<p>The challenge description says this</p>
+<p><img alt="image" src="https://user-images.githubusercontent.com/96860148/156932003-4dd39c5e-68a1-42c1-999f-14b6f18176bc.png" /></p>
+<p>This made my head to lock on LFI and RFI. This is how the page looks like..</p>
+<p><img alt="image" src="https://user-images.githubusercontent.com/96860148/156932089-932e5c29-e442-4d9a-b6e7-5dd759df581f.png" /></p>
+<p>With some form of LFI...</p>
+<p><img alt="image" src="https://user-images.githubusercontent.com/96860148/156932154-bbb91a1d-98ca-4319-a8ac-98322e9a12cb.png" /></p>
+<p>Trying LFI and RFI proved useless and then I realized that the description was some sort of subliminal persuation. I was thinking the way the author wanted me
+to think, not how i should think think...bingo 😸. Mr.Dirsearch sorted me out....again..</p>
+<p><img alt="image" src="https://user-images.githubusercontent.com/96860148/156932380-83ce3ae5-9f9d-4dd5-9321-9c1253f5f862.png" /></p>
+<p>So i go for my flag</p>
+<p><img alt="image" src="https://user-images.githubusercontent.com/96860148/156932409-649cca0b-d77a-4044-ba0f-680b8703ea39.png" /></p>
+<p>There it is folks..the flags for all challs except the eighth one. Nobody was able to solve it and I would like to ask the organizers to post the write-up for it.
+It's been a pleasure folks.</p>
+<p>Till next CTF,<br />
+Par5z.</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../2022-02-26-mhsctf-2022/" class="md-footer__link md-footer__link--prev" aria-label="Previous: MHSCTF 2022" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              MHSCTF 2022
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../2022-05-20-JWT/" class="md-footer__link md-footer__link--next" aria-label="Next: JSON WEB TOKENS (JWT)" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              JSON WEB TOKENS (JWT)
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2022 Calvin Kimani
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs"], "search": "../../assets/javascripts/workers/search.5bf1dace.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.078830c0.min.js"></script>
+      
+    
+  </body>
+</html>

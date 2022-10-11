@@ -1,0 +1,1089 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.0, mkdocs-material-8.5.6">
+    
+    
+      
+        <title>MHSCTF 2022 - WOLF</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.20d9efc8.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.cbb835fc.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#8bc34b">
+        
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="light-green" data-md-color-accent="indigo">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#mhsctf-2022" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="WOLF" class="md-header__button md-logo" aria-label="WOLF" data-md-component="logo">
+      
+  <img src="../../assets/logo.jpg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            WOLF
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              MHSCTF 2022
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../Ctf/" class="md-tabs__link">
+      Writeups
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../Go/" class="md-tabs__link">
+      Go
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../Privesc/" class="md-tabs__link">
+      Privesc
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Programming/Assembly/Commandline/" class="md-tabs__link">
+        Programming
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../2022-01-22-knight-ctf/" class="md-tabs__link md-tabs__link--active">
+        Writeups
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="WOLF" class="md-nav__button md-logo" aria-label="WOLF" data-md-component="logo">
+      
+  <img src="../../assets/logo.jpg" alt="logo">
+
+    </a>
+    WOLF
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Ctf/" class="md-nav__link">
+        Writeups
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Go/" class="md-nav__link">
+        Go
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Privesc/" class="md-nav__link">
+        Privesc
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          Programming
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Programming" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Programming
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_1" type="checkbox" id="__nav_5_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_1">
+          Assembly
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Assembly" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_1">
+          <span class="md-nav__icon md-icon"></span>
+          Assembly
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Programming/Assembly/Commandline/" class="md-nav__link">
+        Commandline Arguments
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          Writeups
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Writeups" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Writeups
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2022-01-22-knight-ctf/" class="md-nav__link">
+        KNIGHT CTF 2022
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          MHSCTF 2022
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        MHSCTF 2022
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#february-18th-12pm-est-february-25th-12pm-est" class="md-nav__link">
+    February 18th, 12PM EST - February 25th, 12PM EST
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#challenges" class="md-nav__link">
+    Challenges
+  </a>
+  
+    <nav class="md-nav" aria-label="Challenges">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#challenge-1-james-harold-japp-10-pts" class="md-nav__link">
+    Challenge 1: James Harold Japp - 10 pts.
+  </a>
+  
+    <nav class="md-nav" aria-label="Challenge 1: James Harold Japp - 10 pts.">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#page-source" class="md-nav__link">
+    Page-source:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mitigation" class="md-nav__link">
+    Mitigation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#challenge-2-new-site-who-dis-20pts-solved-earlier-before-me" class="md-nav__link">
+    Challenge 2:  new site who dis? - 20pts (solved earlier before me).
+  </a>
+  
+    <nav class="md-nav" aria-label="Challenge 2:  new site who dis? - 20pts (solved earlier before me).">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mitigation_1" class="md-nav__link">
+    Mitigation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#challenge-3-piece-it-together-25pts" class="md-nav__link">
+    Challenge 3: Piece It Together - 25pts.
+  </a>
+  
+    <nav class="md-nav" aria-label="Challenge 3: Piece It Together - 25pts.">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mitigation_2" class="md-nav__link">
+    Mitigation.
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#challenge-4-cuppa-joe-3pts" class="md-nav__link">
+    Challenge 4: Cuppa Joe - 3pts.
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#challenge-5-practice-for-school-55pts" class="md-nav__link">
+    Challenge 5:  Practice For School - 55pts.
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2022-03-06-urchinsec-ctf/" class="md-nav__link">
+        Urchinsec 2022
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2022-05-20-JWT/" class="md-nav__link">
+        JSON WEB TOKENS (JWT)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2022-06-08-Late-Writeup/" class="md-nav__link">
+        Late HTB Writeup
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2022-06-08-Pandora-Writeup/" class="md-nav__link">
+        Pandora HTB Writeup
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2022-07-23-Wgel-CTF/" class="md-nav__link">
+        THM Easy Box - Wgel CTF
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2022-07-23-basic-Pentesting/" class="md-nav__link">
+        2022 07 23 basic Pentesting
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#february-18th-12pm-est-february-25th-12pm-est" class="md-nav__link">
+    February 18th, 12PM EST - February 25th, 12PM EST
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#challenges" class="md-nav__link">
+    Challenges
+  </a>
+  
+    <nav class="md-nav" aria-label="Challenges">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#challenge-1-james-harold-japp-10-pts" class="md-nav__link">
+    Challenge 1: James Harold Japp - 10 pts.
+  </a>
+  
+    <nav class="md-nav" aria-label="Challenge 1: James Harold Japp - 10 pts.">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#page-source" class="md-nav__link">
+    Page-source:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mitigation" class="md-nav__link">
+    Mitigation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#challenge-2-new-site-who-dis-20pts-solved-earlier-before-me" class="md-nav__link">
+    Challenge 2:  new site who dis? - 20pts (solved earlier before me).
+  </a>
+  
+    <nav class="md-nav" aria-label="Challenge 2:  new site who dis? - 20pts (solved earlier before me).">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mitigation_1" class="md-nav__link">
+    Mitigation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#challenge-3-piece-it-together-25pts" class="md-nav__link">
+    Challenge 3: Piece It Together - 25pts.
+  </a>
+  
+    <nav class="md-nav" aria-label="Challenge 3: Piece It Together - 25pts.">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mitigation_2" class="md-nav__link">
+    Mitigation.
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#challenge-4-cuppa-joe-3pts" class="md-nav__link">
+    Challenge 4: Cuppa Joe - 3pts.
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#challenge-5-practice-for-school-55pts" class="md-nav__link">
+    Challenge 5:  Practice For School - 55pts.
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="mhsctf-2022">MHSCTF 2022</h1>
+<h2 id="february-18th-12pm-est-february-25th-12pm-est">February 18th, 12PM EST - February 25th, 12PM EST</h2>
+<p><img alt="mhsctf logo" src="https://user-images.githubusercontent.com/96860148/155072094-e2f73ee2-bb65-4296-8264-2122ab47e1ad.png" /></p>
+<!--more-->
+
+<p>Overall, the ctf was easy (in regard to web). The CTF was jeopardy-style and covered:
+* General/Misc
+* Cryptography
+* Forensics
+* Web Exploits
+* Reverse Engineering
+* Pwn</p>
+<p>As usual I was with my team <a href="https://twitter.com/fr334aksmini">Fr334aks-mini</a> and Web Exploits.</p>
+<p><img alt="freaksmini" src="https://user-images.githubusercontent.com/96860148/155076562-8534d0f7-ef23-4465-9f03-7dd87d59d550.png" /></p>
+<p>In total there were eight web challenges. I managed to solve four of them while my teammates solved the other four.
+I will also touch on 1 other that I managed to solve but were solved before i got started.</p>
+<h2 id="challenges">Challenges</h2>
+<ul>
+<li>James Harold Japp - 10 points</li>
+<li>new site who dis? - 20 points(Solved by teammate)</li>
+<li>Piece it together - 25 points</li>
+<li>Cuppa Joe- 30 points</li>
+<li>Practice for School - 55 points</li>
+</ul>
+<h3 id="challenge-1-james-harold-japp-10-pts">Challenge 1: James Harold Japp - 10 pts.</h3>
+<p>The vulnerability in this challenge is number one in the OWASP top ten vulnerabilities <a href="https://owasp.org/Top10/A01_2021-Broken_Access_Control/"><strong>A01:2021-Broken Access Control</strong></a>. You can read more about it in <a href="https://portswigger.net/web-security/access-control">Portswigger's Access control vulnerabilities and privilege escalation</a>.</p>
+<p>The mission of this challenge was to login to a site and get the flag. We're directed to a login page that looked like this:</p>
+<p><img alt="login page 1" src="https://user-images.githubusercontent.com/96860148/155074245-0b396d9f-c2e0-4238-b8da-9d6dddbd8fb8.png" /></p>
+<h4 id="page-source">Page-source:</h4>
+<pre><code>&lt;head&gt;
+  &lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;&gt;
+  &lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin&gt;
+  &lt;link href=&quot;https://fonts.googleapis.com/css2?family=Lato:wght@300&amp;family=Exo+2&amp;display=swap&quot; rel=&quot;stylesheet&quot;&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;https://www.w3schools.com/w3css/4/w3.css&quot;&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;https://mhsctf-webexploitdata.0xmmalik.repl.co/style.css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div class=&quot;w3-content&quot;&gt;
+    &lt;label for=&quot;pwd&quot;&gt;Password:&lt;/label&gt;
+    &lt;input type=&quot;password&quot; id=&quot;pwd&quot; name=&quot;pwd&quot;&gt;
+    &lt;button onclick=&quot;validatepwd()&quot; type=&quot;button&quot;&gt;Submit&lt;/button&gt;
+
+    &lt;script&gt;
+      function validatepwd() {
+        var x = document.getElementById(&quot;pwd&quot;).value;
+        if (x == &quot;this_is_a_really_secure_password&quot;) {
+          window.open(&quot;/weirdpage.php?pwd=doublepassword&quot;)
+        }
+      }
+    &lt;/script&gt;
+  &lt;/div&gt;
+&lt;/body&gt;
+</code></pre>
+<p>Now we've got the password for the login --&gt; <strong>this_is_a_really_secure_password</strong>. The script is supposed to open a new url <strong>/weirdpage.php?pwd=doublepassword</strong> if the password is right..</p>
+<p>However on heading to the redirection url....</p>
+<p><img alt="not found" src="https://user-images.githubusercontent.com/96860148/155075305-0a63d5d8-779e-4948-ad11-d71404e6bc76.png" /></p>
+<p>But what does the source code have to say....</p>
+<pre><code>&lt;!doctype html&gt;&lt;html&gt;&lt;head&gt;&lt;!--lol gottem here's the flag: flag{1n$p3ct0r_g3n3r@l}--&gt;&lt;title&gt;404 Not Found&lt;/title&gt;&lt;style&gt;
+body { background-color: #fcfcfc; color: #333333; margin: 0; padding:0; }
+h1 { font-size: 1.5em; font-weight: normal; background-color: #9999cc; min-height:2em; line-height:2em; border-bottom: 1px inset black; margin: 0; }
+h1, p { padding-left: 10px; }
+code.url { background-color: #eeeeee; font-family:monospace; padding:0 2px;}
+&lt;/style&gt;
+&lt;/head&gt;&lt;body&gt;&lt;h1&gt;Not Found&lt;/h1&gt;&lt;p&gt;The requested resource &lt;code class=&quot;url&quot;&gt;/weirdpage.php?pwd=doublepassword&lt;/code&gt; was not found on this server.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
+</code></pre>
+<p>Now we've got 10 points on our side.</p>
+<h4 id="mitigation">Mitigation</h4>
+<ol>
+<li>Use strong passwords with eight or more characers. The characters should comprise of both small and capital letters, numbers, special char and the password should also be unexpected. Also don't use default creds. Change them once you have the security control measure in.</li>
+<li>Don't use scripts in the client side to authenticate users. Some obfuscation is good but thats bad. Use a database and PHP. This way your code is more secure.</li>
+</ol>
+<h3 id="challenge-2-new-site-who-dis-20pts-solved-earlier-before-me">Challenge 2:  new site who dis? - 20pts (solved earlier before me).</h3>
+<p>Heading to this challenge we're taken to this site that says....</p>
+<p><img alt="new site" src="https://user-images.githubusercontent.com/96860148/155796372-69a887a8-f6ab-4d4b-bccd-c314b00cecc6.png" /></p>
+<p>On clicking the link we're taken to another that says....</p>
+<p><img alt="wrong user" src="https://user-images.githubusercontent.com/96860148/155797128-8b9703b1-713e-49c8-ab17-a7a9b139658c.png" /></p>
+<p>Checking the results, we can guess that the flag page is using something to confirm whether I am an admin or not. I check the cookies to see if there is anything and I find one with the name user and has the value basic. I guess this is it. I change the value to admin, reload the page and voila! I get the flag.</p>
+<p><img alt="image" src="https://user-images.githubusercontent.com/96860148/155799598-60d4fc39-cc2b-4852-8b7c-ae978af3288e.png" /></p>
+<h4 id="mitigation_1">Mitigation</h4>
+<ol>
+<li>Don't use obvious cookies that show what their use is for.</li>
+<li>Use session identifiers. These have their own issues, but won't let people break things quite so easily.</li>
+</ol>
+<h3 id="challenge-3-piece-it-together-25pts">Challenge 3: Piece It Together - 25pts.</h3>
+<p><img alt="login" src="https://user-images.githubusercontent.com/96860148/155802766-2ca32c3a-acfe-406e-aed4-57a40f0a63ac.png" /></p>
+<p>What does the DOM selection source have to say...</p>
+<pre><code>&lt;div class=&quot;w3-content&quot;&gt;
+    &lt;h2&gt;Login&lt;/h2&gt;
+    &lt;script&gt;
+var _0xa8fe=[&quot;\x34\x77&quot;,&quot;\x64\x7D&quot;,&quot;\x67\x7B&quot;,&quot;\x6A&quot;,&quot;\x7D&quot;,&quot;\x31\x67&quot;,&quot;\x77\x30&quot;,&quot;\x72&quot;,&quot;\x61\x6C&quot;,&quot;\x73&quot;,&quot;\x68\x37&quot;,&quot;\x61\x67\x7B&quot;,&quot;\x66\x6C&quot;,&quot;\x6D\x33\x74&quot;,&quot;\x76\x61\x6C\x75\x65&quot;,&quot;\x70\x77\x64&quot;,&quot;\x67\x65\x74\x45\x6C\x65\x6D\x65\x6E\x74\x42\x79\x49\x64&quot;,&quot;\x59\x65\x70\x2C\x20\x74\x68\x61\x74\x27\x73\x20\x74\x68\x65\x20\x66\x6C\x61\x67\x21&quot;,&quot;\x53\x6F\x72\x72\x79\x2C\x20\x74\x68\x61\x74\x27\x73\x20\x6E\x6F\x74\x20\x74\x68\x65\x20\x66\x6C\x61\x67\x21&quot;];function checkpwd(){if(document[_0xa8fe[16]](_0xa8fe[15])[_0xa8fe[14]]== (_0xa8fe[12]+ _0xa8fe[11]+ _0xa8fe[3]+ _0xa8fe[5]+ _0xa8fe[9]+ _0xa8fe[0]+ _0xa8fe[4])){alert(_0xa8fe[17])}else {alert(_0xa8fe[18])}}
+    &lt;/script&gt;
+
+    &lt;label for=&quot;pwd&quot;&gt;Password:&lt;/label&gt;
+    &lt;input type=&quot;text&quot; id=&quot;pwd&quot; name=&quot;pwd&quot;&gt;
+    &lt;button onclick=&quot;checkpwd()&quot;&gt;Submit&lt;/button&gt;
+  &lt;/div&gt;
+  ```
+  The javascript has been obfuscated. My guess is the obfuscated javascript is validating the password. So I head over to [deobfuscate.io](https://deobfuscate.io/) to deobfuscate.
+  ```
+  function checkpwd() {
+  if (document.getElementById(&quot;pwd&quot;).value == &quot;flag{j1gs4w}&quot;) {
+    alert(&quot;Yep, that's the flag!&quot;);
+  } else {
+    alert(&quot;Sorry, that's not the flag!&quot;);
+  }
+}
+</code></pre>
+<p>The flag is right there...<strong>flag{j1gs4w}</strong></p>
+<h4 id="mitigation_2">Mitigation.</h4>
+<ol>
+<li>Don't use client side scripts to authenticate users. Use a database and php. This makes your site more secure.</li>
+</ol>
+<h3 id="challenge-4-cuppa-joe-3pts">Challenge 4: Cuppa Joe - 3pts.</h3>
+<p><img alt="cuppa joe" src="https://user-images.githubusercontent.com/96860148/155804688-3b9e2c10-4292-49e4-a4e4-df38548ca96b.png" /></p>
+<p>At first on viewing the web page, the firt thing that came on my mind was XSS and true enough inserting and submitting </p>
+<p><code>&lt;script&gt;alert(1)&lt;/script&gt;</code> in the query gives out</p>
+<p><img alt="image" src="https://user-images.githubusercontent.com/96860148/155805689-a3707833-d254-48d5-b90b-ed339cf4cc0c.png" /></p>
+<p>However this would be a very deep rabbit hole..so i continue to interact with the page. The <strong>flag.php</strong> looks inviting but on clicking nothing changes except the url which changes from </p>
+<p>https://mhsctf-cuppajoe.0xmmalik.repl.co/ to https://mhsctf-cuppajoe.0xmmalik.repl.co/TODO%20fill%20out%20the%20links.</p>
+<p>So i check the page source code which seals the fate...</p>
+<pre><code>&lt;head&gt;
+  &lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;&gt;
+  &lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin&gt;
+  &lt;link href=&quot;https://fonts.googleapis.com/css2?family=Lato:wght@300&amp;family=Exo+2&amp;display=swap&quot; rel=&quot;stylesheet&quot;&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;https://www.w3schools.com/w3css/4/w3.css&quot;&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;https://mhsctf-webexploitdata.0xmmalik.repl.co/style.css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div class=&quot;w3-content&quot;&gt;
+    &lt;h2&gt;Cuppa Joe&lt;/h2&gt;
+    &lt;div class=&quot;sidenav&quot;&gt;
+    Sitemap:
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href=&quot;TODO fill out the links&quot;&gt;index.php&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;TODO fill out the links&quot;&gt;flag.php&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;TODO fill out the links&quot;&gt;message.php&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+    Welcome to Cuppa Joe! We're a coffee shop that... loves coffee! Our website is still under construction so don't be going around and exploiting us ;)&lt;br /&gt;&lt;br /&gt;Leave us a message in the meantime!&lt;br /&gt;&lt;br /&gt;
+
+    &lt;form action=&quot;message.php&quot; method=&quot;POST&quot;&gt;
+      &lt;label for=&quot;message&quot;&gt;Your message:&lt;/label&gt;&lt;br /&gt;
+      &lt;textarea name=&quot;message&quot; id=&quot;message&quot; rows=&quot;5&quot; cols=&quot;50&quot; style=&quot;height:30%;&quot;&gt;&lt;/textarea&gt;&lt;br /&gt;
+      &lt;input type=&quot;submit&quot;&gt;
+    &lt;/form&gt;
+  &lt;/div&gt;
+&lt;/body&gt;
+</code></pre>
+<p>The href="TODO fill out the links" jumps at me that I'm supposed to fill out the links with their proper reference. Because I'm only interested with the flag I use the browser inspector to change href="TODO fill out the links"  to href="flag.php". Clicking the new link I get the flag <img alt="image" src="https://user-images.githubusercontent.com/96860148/155806787-84a03daa-6cef-46cd-9a08-6ec0b2dea9af.png" />.</p>
+<h3 id="challenge-5-practice-for-school-55pts">Challenge 5:  Practice For School - 55pts.</h3>
+<p>This one was tricky. We're provided with a link to an edpuzzle classroom https://edpuzzle.com/assignments/60c90ddeffb96f416707e09d/watch. </p>
+<p>In the challenge description the author gives a note <strong>the video is 168 hours (1 week) long so you will not be able to watch through the whole thing. :)</strong>
+Well we could do that by forwarding the video. Now this is where I started scratching my head (but not for long). The youtube video had no controls and no way to forward it!!! Also the edpuzzle control bar was locked. There is a multiple-choice task that is activated when the video reached a time.</p>
+<p><img alt="image" src="https://user-images.githubusercontent.com/96860148/155815453-cceeceae-06e2-43e0-aa9b-994462624864.png" /></p>
+<p>I had to find a way to forward the video. The youtube video was an iframe suggesting that it had its own controls. It then occurred to me that the controls were somehow removed when the iframe was being loaded. I had to find a way to intercept the request. Burpsuite. I loaded burpsuite to intercept the iframe request and sure enough I intercepted the rogue request :)</p>
+<p><img alt="image" src="https://user-images.githubusercontent.com/96860148/155810028-40f62e3f-08ad-4e67-95af-d6902b5bf504.png" /></p>
+<p>So i change controls=0 to controls=1 and now we have a control bar.</p>
+<p><img alt="image" src="https://user-images.githubusercontent.com/96860148/155813751-d1a262e3-64ca-4a31-8710-466cc2781f8d.png" /></p>
+<p>Then <strong>IMPORTANT</strong> drag the control all the way to the end to reveal the multiple-choice question and finally the flag.</p>
+<p><img alt="image" src="https://user-images.githubusercontent.com/96860148/155814154-e4f548c9-1f9c-4e76-9951-a493060000de.png" /></p>
+<p>All in all the CTF was awesome and a little challenging. Thanks to the MHSCTF team for the CTF. Looking forward for more CTFs from them.
+That's all i've got for this CTF.</p>
+<p>Till next CTF,
+Parsz.</p>
+<p><a href="https://twitter.com/_parsz"><img alt="icons8-twitter(1)" src="https://user-images.githubusercontent.com/96860148/155816619-7b63a9ce-aa17-4a2e-9bda-fe188caf3563.gif" />
+</a></p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../2022-01-22-knight-ctf/" class="md-footer__link md-footer__link--prev" aria-label="Previous: KNIGHT CTF 2022" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              KNIGHT CTF 2022
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../2022-03-06-urchinsec-ctf/" class="md-footer__link md-footer__link--next" aria-label="Next: Urchinsec 2022" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Urchinsec 2022
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2022 Calvin Kimani
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs"], "search": "../../assets/javascripts/workers/search.5bf1dace.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.078830c0.min.js"></script>
+      
+    
+  </body>
+</html>

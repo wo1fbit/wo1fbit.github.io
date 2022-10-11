@@ -1,0 +1,919 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.0, mkdocs-material-8.5.6">
+    
+    
+      
+        <title>Pandora HTB Writeup - WOLF</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.20d9efc8.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.cbb835fc.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#8bc34b">
+        
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="light-green" data-md-color-accent="indigo">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#1-enumeration" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="WOLF" class="md-header__button md-logo" aria-label="WOLF" data-md-component="logo">
+      
+  <img src="../../assets/logo.jpg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            WOLF
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Pandora HTB Writeup
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../Ctf/" class="md-tabs__link">
+      Writeups
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../Go/" class="md-tabs__link">
+      Go
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../Privesc/" class="md-tabs__link">
+      Privesc
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Programming/Assembly/Commandline/" class="md-tabs__link">
+        Programming
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../2022-01-22-knight-ctf/" class="md-tabs__link md-tabs__link--active">
+        Writeups
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="WOLF" class="md-nav__button md-logo" aria-label="WOLF" data-md-component="logo">
+      
+  <img src="../../assets/logo.jpg" alt="logo">
+
+    </a>
+    WOLF
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Ctf/" class="md-nav__link">
+        Writeups
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Go/" class="md-nav__link">
+        Go
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Privesc/" class="md-nav__link">
+        Privesc
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          Programming
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Programming" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Programming
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_1" type="checkbox" id="__nav_5_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_1">
+          Assembly
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Assembly" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_1">
+          <span class="md-nav__icon md-icon"></span>
+          Assembly
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Programming/Assembly/Commandline/" class="md-nav__link">
+        Commandline Arguments
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          Writeups
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Writeups" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Writeups
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2022-01-22-knight-ctf/" class="md-nav__link">
+        KNIGHT CTF 2022
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2022-02-26-mhsctf-2022/" class="md-nav__link">
+        MHSCTF 2022
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2022-03-06-urchinsec-ctf/" class="md-nav__link">
+        Urchinsec 2022
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2022-05-20-JWT/" class="md-nav__link">
+        JSON WEB TOKENS (JWT)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2022-06-08-Late-Writeup/" class="md-nav__link">
+        Late HTB Writeup
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Pandora HTB Writeup
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Pandora HTB Writeup
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-enumeration" class="md-nav__link">
+    1 Enumeration
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#snmp-port-161" class="md-nav__link">
+    SNMP Port 161
+  </a>
+  
+    <nav class="md-nav" aria-label="SNMP Port 161">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#snmp-enumeration" class="md-nav__link">
+    SNMP Enumeration
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-foothold" class="md-nav__link">
+    2 Foothold
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-privesc" class="md-nav__link">
+    3 Privesc
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2022-07-23-Wgel-CTF/" class="md-nav__link">
+        THM Easy Box - Wgel CTF
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2022-07-23-basic-Pentesting/" class="md-nav__link">
+        2022 07 23 basic Pentesting
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-enumeration" class="md-nav__link">
+    1 Enumeration
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#snmp-port-161" class="md-nav__link">
+    SNMP Port 161
+  </a>
+  
+    <nav class="md-nav" aria-label="SNMP Port 161">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#snmp-enumeration" class="md-nav__link">
+    SNMP Enumeration
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-foothold" class="md-nav__link">
+    2 Foothold
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-privesc" class="md-nav__link">
+    3 Privesc
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  <h1>Pandora HTB Writeup</h1>
+
+<p>From the decription of the machine, I pwned the box in an unintended way.</p>
+<p><img alt="logo" src="https://i.imgur.com/R2z087e.png" /></p>
+<h2 id="1-enumeration">1 Enumeration</h2>
+<!--more-->
+
+<p>nmap</p>
+<pre><code>┌──(wolf㉿piratesec)-[~/Htb/pandora]
+└─$ sudo nmap --min-rate 20000 10.129.87.252 -oN nmap -v -sU -sS
+[sudo] password for wolf:
+Starting Nmap 7.92 ( https://nmap.org ) at 2022-06-07 07:40 EDT
+Initiating Ping Scan at 07:40
+Scanning 10.129.87.252 [4 ports]
+Completed Ping Scan at 07:40, 0.20s elapsed (1 total hosts)
+Initiating Parallel DNS resolution of 1 host. at 07:40
+Completed Parallel DNS resolution of 1 host. at 07:40, 0.06s elapsed
+Initiating SYN Stealth Scan at 07:40
+Scanning 10.129.87.252 [1000 ports]
+Increasing send delay for 10.129.87.252 from 0 to 5 due to 97 out of 321 dropped probes since last increase.
+Discovered open port 80/tcp on 10.129.87.252
+Discovered open port 22/tcp on 10.129.87.252
+Increasing send delay for 10.129.87.252 from 5 to 10 due to 196 out of 653 dropped probes since last increase.
+Completed SYN Stealth Scan at 07:40, 0.72s elapsed (1000 total ports)
+Initiating UDP Scan at 07:40
+Scanning 10.129.87.252 [1000 ports]
+Discovered open port 161/udp on 10.129.87.252
+Completed UDP Scan at 07:40, 0.39s elapsed (1000 total ports)
+Nmap scan report for 10.129.87.252
+Host is up (0.16s latency).
+Not shown: 998 closed tcp ports (reset), 6 closed udp ports (port-unreach), 993 open|filtered udp ports (no-response)
+PORT    STATE SERVICE
+22/tcp  open  ssh
+80/tcp  open  http
+161/udp open  snmp
+
+Read data files from: /usr/bin/../share/nmap
+Nmap done: 1 IP address (1 host up) scanned in 1.65 seconds
+           Raw packets sent: 4138 (186.425KB) | Rcvd: 1009 (40.852KB)
+</code></pre>
+<p>I'm going to start with the low lying fruits: SNMP port 161.</p>
+<h2 id="snmp-port-161">SNMP Port 161</h2>
+<p>Simple Network Management Protocol (SNMP) is an internet standard protocol used to monitor and manage Network devices connected over an IP.
+Snmp can be a great place to look for information. I'm going to head over to metasploit to see if there are any exploits. SNMP can also be enumerated by <strong>SNPMWALK</strong>.</p>
+<h3 id="snmp-enumeration">SNMP Enumeration</h3>
+<p>I found this metasploit exploit to enumerate SNMP</p>
+<p><img alt="snmp" src="https://i.imgur.com/49uyQhZ.png" /></p>
+<p>Running it against the port I get creds for a user:daniel with pass:HotelBabylon23</p>
+<pre><code>976                 runnable            sh                  /bin/sh             -c sleep 30; /bin/bash -c '/usr/bin/host_check -u daniel -p HotelBabylon23'
+981                 runnable            sshd                sshd: /usr/sbin/sshd -D [listener] 0 of 10-100 startups
+1005                runnable            agetty              /sbin/agetty        -o -p -- \u --noclear tty1 linux
+1041                runnable            mysqld              /usr/sbin/mysqld
+1042                runnable            apache2             /usr/sbin/apache2   -k start
+1043                runnable            apache2             /usr/sbin/apache2   -k start
+1044                runnable            apache2             /usr/sbin/apache2   -k start
+1045                runnable            apache2             /usr/sbin/apache2   -k start
+1046                runnable            apache2             /usr/sbin/apache2   -k start
+1047                runnable            apache2             /usr/sbin/apache2   -k start
+1137                runnable            host_check          /usr/bin/host_check -u daniel -p HotelBabylon23
+1178                runnable            apache2             /usr/sbin/apache2   -k start
+1199                runnable            apache2             /usr/sbin/apache2   -k start
+1200                runnable            apache2             /usr/sbin/apache2   -k start
+1289                unknown             kworker/u4:0-events_power_efficient
+1302                runnable            apache2             /usr/sbin/apache2   -k start
+1353                runnable            apache2             /usr/sbin/apache2   -k start
+1378                unknown             kworker/0:0-events
+1455                unknown             kworker/u4:1-events_power_efficient
+1457                unknown             kworker/0:1-cgroup_destroy
+1459                unknown             kworker/1:0
+
+
+[*] Scanned 1 of 1 hosts (100% complete)
+[*] Auxiliary module execution completed
+msf6 auxiliary(scanner/snmp/snmp_enum) &gt;
+</code></pre>
+<h2 id="2-foothold">2 Foothold</h2>
+<p>Using the creds I'm able to login into ssh..</p>
+<pre><code>┌──(wolf㉿piratesec)-[~/Htb/pandora]
+└─$ ssh daniel@10.129.87.252
+daniel@10.129.87.252's password:
+Welcome to Ubuntu 20.04.3 LTS (GNU/Linux 5.4.0-91-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+  System information as of Tue  7 Jun 08:52:40 UTC 2022
+
+  System load:           0.02
+  Usage of /:            63.0% of 4.87GB
+  Memory usage:          8%
+  Swap usage:            0%
+  Processes:             224
+  Users logged in:       1
+  IPv4 address for eth0: 10.129.87.252
+  IPv6 address for eth0: dead:beef::250:56ff:fe96:2577
+
+  =&gt; /boot is using 91.8% of 219MB
+
+
+0 updates can be applied immediately.
+
+
+The list of available updates is more than a week old.
+To check for new updates run: sudo apt update
+Failed to connect to https://changelogs.ubuntu.com/meta-release-lts. Check your Internet connection or proxy settings
+
+
+Last login: Tue Jun  7 08:51:30 2022 from 10.10.16.14
+daniel@pandora:~$
+</code></pre>
+<p>Looking around the daniel's directory I find nothing. Daniel can't execute sudo commands.</p>
+<p><img alt="daniel" src="https://i.imgur.com/gNelaUc.png" /></p>
+<p>I then head over to home and find another user Matt. Inside Matt's directory is a user.txt but I can't read it: permission denied.</p>
+<p><img alt="perm" src="https://i.imgur.com/4aoQLoP.png" /></p>
+<h2 id="3-privesc">3 Privesc</h2>
+<p>Time for Linpeas. I start a python server on my local machine and download linpeas on the compromised machine. It seems the sudo version is vulnerable to  CVE-2021-4034.</p>
+<p><img alt="linpeas" src="https://i.imgur.com/nzLdnpP.png" /></p>
+<p>Looking around the web I found a <a href="https://github.com/joeammond/CVE-2021-4034/blob/main/CVE-2021-4034.py">python exploit</a> to exploit the vulnerability.</p>
+<p>Running it on the machine I get root..</p>
+<p><img alt="root" src="https://i.imgur.com/gkIYYTC.png" /></p>
+<p>@wolf</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../2022-06-08-Late-Writeup/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Late HTB Writeup" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Late HTB Writeup
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../2022-07-23-Wgel-CTF/" class="md-footer__link md-footer__link--next" aria-label="Next: THM Easy Box - Wgel CTF" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              THM Easy Box - Wgel CTF
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2022 Calvin Kimani
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs"], "search": "../../assets/javascripts/workers/search.5bf1dace.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.078830c0.min.js"></script>
+      
+    
+  </body>
+</html>

